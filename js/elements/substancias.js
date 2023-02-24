@@ -4,9 +4,12 @@ export class Agua {
     congelacion = 0;
     estado = 1;
     absorcionCalor = 1;
+    temperatura = 20;
 
     constructor () {
-        console.log ('hola mundo');
+    }
+    toString () {
+        console.log(`soy Agua a ${this.temperatura} grados.\n`);
     }
 
 }
