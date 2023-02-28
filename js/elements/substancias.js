@@ -11,6 +11,16 @@ export class Agua {
     toString () {
         console.log(`soy Agua a ${this.temperatura} grados.\n`);
     }
+    update(){
+        if (this.temperatura > this.ebullicion){
+            this.estado = 2;
+            console.log ("me evaporo");
+        } else if (this.temperatura < this.congelacion) {
+            this.estado = 0;
+            console.log ("me congelo");
+        }
+        
+    }
 
 }
 

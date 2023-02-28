@@ -3,9 +3,13 @@ import {Precipitados} from './elements/recipientes.js';
 
 let precipitados = new Precipitados();
 
-for (let i = 0; i < 100; i++) {
+for (let i = 0; i < 10; i++) {
     precipitados.aceptar(new Agua);
 }
 
-precipitados.calentar(10);
-precipitados.listar()
+setInterval(() => {
+    precipitados.calentar(100);
+    precipitados.update();
+    precipitados.listar()
+}, 1000);
+
