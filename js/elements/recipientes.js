@@ -22,6 +22,9 @@ class Recipiente {
             }
         }
     }
+    acoplar (objeto) {
+        this.padre = objeto;
+    }
     
 
 }
