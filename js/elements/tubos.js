@@ -2,9 +2,11 @@ class Tubo {
     contiene = [];
     padre;
     hijos = [];
-    constructor (){ 
+    constructor (padre){
+        this.padre = padre 
     };
     acoplar (objeto) {
-        this.padre = objeto;
+        this.hijos.push(objeto);
     }
+
 }

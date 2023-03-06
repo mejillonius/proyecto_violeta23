@@ -1,15 +1,24 @@
 import {Agua} from './elements/substancias.js';
 import {Precipitados} from './elements/recipientes.js';
+import {Calentador} from './elements/actuadores.js';
+import {Laboratorio} from './elements/laboratorio.js';
 
-let precipitados = new Precipitados();
 
-for (let i = 0; i < 10; i++) {
-    precipitados.aceptar(new Agua);
+
+let canvas = new Laboratorio()
+
+canvas.acoplar(new Precipitados(canvas));
+let precipitados = canvas.hijos[0];
+
+
+for (let i = 0; i < 100; i++) {
+    precipitados.llenar(new Agua);
 }
+precipitados.acoplar(new Calentador(precipitados));
+console.log (precipitados);
 
-setInterval(() => {
-    precipitados.calentar(100);
-    precipitados.update();
-    precipitados.listar()
-}, 1000);
+setInterval(() => {  
+    canvas.update();
+    
+}, 100);
 

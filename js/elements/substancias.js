@@ -21,6 +21,9 @@ export class Agua {
         }
         
     }
+    getTemperatura(){
+        return this.temperatura;
+    }
 
 }
 
