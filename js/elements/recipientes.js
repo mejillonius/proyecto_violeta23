@@ -55,15 +55,35 @@ export class Precipitados extends Recipiente{
         <p class = "contiene"> y contengo ${this.contiene.length}</p>
         <p class = "temperatura"> mi temperatura es 20º</p>
         <p class = "acoples"></p>
+        <div class = "color" style="    background-color: blue;
+                                        text-align: center;
+                                        height: 100px;
+                                        width: 100px;
+                                                        "></div>
         
         </div>`
         
     }
     update () {
+        let arrayC;
+        let newR;
+        let newG;
+        let newB;
+        if (this.contiene.length > 0){
+            arrayC = this.contiene[0].getColorA();
+            newR = arrayC[0];
+            newG = arrayC[1];
+            newB = arrayC[2];
+        }
         //update a las substancias
         if (this.contiene.length>0){
             for (let i = 0; i < this.contiene.length; i++) {
                 const substancia = this.contiene[i];
+                this.arrayC = substancia.getColorA();
+                
+                newR = (this.newR + this.arrayC[0])/2;
+                newR = (this.newG + this.arrayC[1])/2;
+                newR = (this.newB + this.arrayC[2])/2;
                 substancia.update();
                 if (substancia.estado == 2) {
                     //si se evapora, se escapa del recipiente
@@ -79,6 +99,8 @@ export class Precipitados extends Recipiente{
         }
         document.querySelector(`#${this.nombre} p.contiene`).innerHTML = `y contengo ${this.contiene.length}`;
         document.querySelector(`#${this.nombre} p.temperatura`).innerHTML = `y mi temperatura media es: ${this.getTemperatura()}`;
+        document.querySelector(`#${this.nombre} div.color`).innerHTML = `y mi color es: rgb(${newR},${newG},${newB})`;
+        //`rgb(${this.newR},${this.newG},${this.newB})`
     }
  
 }

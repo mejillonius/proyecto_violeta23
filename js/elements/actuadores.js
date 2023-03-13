@@ -38,12 +38,12 @@ export class Calentador extends Actuador {
     update(){
         this.onOff = document.getElementById(`${this.nombre}estado`).value;
         if (this.onOff == "true"){
-            console.log("caliento");
+            //console.log("caliento");
             for (let i = 0; i < this.potencia; i++) {
                 this.calentar (this.padre.getContiene())
             } 
         }else{
-            console.log("el calentador esta apagado");
+            //console.log("el calentador esta apagado");
         }
 
     }
