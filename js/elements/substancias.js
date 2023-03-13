@@ -35,7 +35,7 @@ export class Agua {
 }
 
 export class Alcohol {
-    colorArray = Array(0,0,0);
+    colorArray = Array(255,0,0);
     color = 'rgb(colorArray[0],colorArray[1],colorArray[2])';
     ebullicion = 78;
     congelacion = -114;
