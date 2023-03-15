@@ -24,7 +24,10 @@ export class Calentador extends Actuador {
     constructor(padre){
         super(padre);
         console.log (`soy un calentador con nombre ${this.nombre} y mi padre es ${this.padre.getNombre()}`);   
-        document.querySelector(`#${padre.getNombre()} p.acoples`).innerHTML += `soy un calentador con nombre ${this.nombre} acoplado a ${padre.getNombre()} y mi estado es : <select name = "selector_calentador" id="${this.nombre}estado"><option value="false" selected>Apagado</option><option value="true">Encendido</option>`;
+        document.querySelector(`#${padre.getNombre()} p.acoples`).innerHTML += `soy un calentador con nombre ${this.nombre} acoplado a ${padre.getNombre()} y mi estado es : <select name = "selector_calentador" id="${this.nombre}estado"><option value="false" selected>Apagado</option><option value="true">Encendido</option>
+        <div class="slidecontainer">
+        <input type="range" min="0" max="100" value="${this.potencia}" class="slider" id="${this.nombre}potencia"><p id="${this.nombre}chivatopotencia">${this.potencia}$</p>
+      </div>`;
     }
     calentar(contiene){
    
@@ -35,7 +38,12 @@ export class Calentador extends Actuador {
             }
     }
 
+    /* comprueba que  */
     update(){
+        this.potencia = document.getElementById(`${this.nombre}potencia`).value;
+
+        document.getElementById(`${this.nombre}chivatopotencia`).innerHTML = this.potencia;
+
         this.onOff = document.getElementById(`${this.nombre}estado`).value;
         if (this.onOff == "true"){
             //console.log("caliento");

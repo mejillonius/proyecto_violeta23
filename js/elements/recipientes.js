@@ -10,6 +10,7 @@ const  generateRandomString = (num) => {
 }
 
 class Recipiente {
+    turnos = 0;
     contiene = [];
     padre;
     hijos = [];
@@ -69,14 +70,34 @@ export class Precipitados extends Recipiente{
     }
     update () {
         this.color = [0,0,0];
+        let proporciones = new Array();
+        let gases = new Array
 
+        for (let j = 0; j < this.hijos.length; j++) {
+            const hijo = this.hijos[j];
+            hijo.update();
+        }
 
-        //update a las substancias
+        for (let k = gases.length; k > 0; k--) {
+            const element = gases[k];
+            this.contiene.splice(element,1);
+            
+        }
+
+        //update a los contenidos
         if (this.contiene.length>0){
-            for (let i = 0; i < this.contiene.length; i++) {
+            
 
+            //calculo del color
+            for (let i = 0; i < this.contiene.length; i++) {
                 const substancia = this.contiene[i];
-                substancia.update();
+
+                if (substancia.constructor.name in proporciones) {
+                    proporciones[substancia.constructor.name] += 1;
+                } else {
+                    proporciones[substancia.constructor.name] = 1
+                }
+
                 this.arrayC = substancia.getColorA();
                 
                 this.color[0] = (this.color[0] + this.arrayC[0])/2;
@@ -86,22 +107,22 @@ export class Precipitados extends Recipiente{
                 if (substancia.estado == 2) {
                     //si se evapora, se escapa del recipiente
                     this.contiene.splice(i,1);
+                    //gases.push(i)
                 }
             }
         }else{
             this.color = [170,170,170];
         }
         
-        for (let j = 0; j < this.hijos.length; j++) {
 
-            const hijo = this.hijos[j];
-            hijo.update();
-        }
-        document.querySelector(`#${this.nombre} p.contiene`).innerHTML = `y contengo ${this.contiene.length}`;
-        document.querySelector(`#${this.nombre} p.temperatura`).innerHTML = `y mi temperatura media es: ${this.getTemperatura()}`;
+
+
+        console.log(this.turnos, proporciones, gases);
+        document.querySelector(`#${this.nombre} p.contiene`).innerHTML = `y contengo ${this.contiene.length} elemantos, `;
+        document.querySelector(`#${this.nombre} p.temperatura`).innerHTML = `y mi temperatura media es: ${this.getTemperatura()}, ${proporciones}`;
         document.querySelector(`#${this.nombre} div.color`).innerHTML = `y mi color es: rgb(${this.color[0]},${this.color[1]},${this.color[2]})`;
         document.querySelector(`#${this.nombre} div.color`).style.backgroundColor = `rgb(${this.color[0]},${this.color[1]},${this.color[2]})`;
-        
+        this.turnos ++;
     }
  
 }
