@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>prueba de fronentd</title>
+    <script>
+        function allowDrop(ev) {
+          ev.preventDefault();
+        }
+        
+        function drag(ev) {
+          ev.dataTransfer.setData("text", ev.target.id);
+          hacervisual = document.getElementsByClassName("targets");
+            for (let i = 0; i < hacervisual.length; i++) {
+                const element = hacervisual[i];
+                element.style.visibility = "visible";
+            }
+        }
+        
+        function drop(ev) {
+          ev.preventDefault();
+          var data = ev.dataTransfer.getData("text");
+          ev.target.appendChild(document.getElementById(data));
+          hacervisual = document.getElementsByClassName("targets");
+            for (let i = 0; i < hacervisual.length; i++) {
+                const element = hacervisual[i];
+                element.style.visibility = "hidden";
+            }
+        }
+        function esconderTarget(ev) {
+            hacervisual = document.getElementsByClassName("targets");
+            for (let i = 0; i < hacervisual.length; i++) {
+                const element = hacervisual[i];
+                element.style.visibility = "hidden";
+            }           
+        }
+        </script>
+</head>
+<body>
+    <nav>
+        <div id="drag1" class="recipiente rojo" draggable="true" ondragstart="drag(event)" ondragend="esconderTarget(event)" >
+            
+            <div class="up targets" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="down targets" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="left targets" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="right targets" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <img src="img/erlenmeyer.png" class="cacharro" draggable="false">
+            frasco 1
+        </div>
+
+        <div id="drag2" class="recipiente azul" draggable="true" ondragstart="drag(event)" ondragend="esconderTarget(event)">
+            <div class="up targets" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="down targets" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="left targets" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <div class="right targets" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+            <img src="img/erlenmeyer.png" class="cacharro" draggable="false">
+            frasco 2
+        </div>
+    </nav>
+    <content>
+        <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+    </content>
+</body>
+</html>

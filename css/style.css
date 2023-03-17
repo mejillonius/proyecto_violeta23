@@ -1,0 +1,78 @@
+.recipiente{
+    height: 200px;
+    width:  200px;
+    position: relative;
+    display: inline-block;
+    visibility: visible;
+}
+
+.rojo{
+    background-color: red;
+}
+.azul{
+    background-color: blue;
+}
+.cacharro{
+    height: 200px;
+    width: 200px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    z-index: 5;
+}
+
+.up {
+    height: 50px;
+    width: 50px;
+    background-color: green;
+    border: 1px solid black;
+    position: absolute;
+    top: -25px;
+    left: 75px;
+    z-index: 10;
+    visibility: hidden;
+}
+.down {
+    height: 50px;
+    width: 50px;
+    background-color: green;
+    border: 1px solid black;
+    position: absolute;
+    left: 75px;
+    top: 175px;
+    z-index: 10;
+    visibility: hidden;
+}
+.left {
+    height: 50px;
+    width: 50px;
+    background-color: green;
+    border: 1px solid black;
+    position: absolute;
+    left: -25px;
+    top: 75px;
+    z-index: 10;
+    visibility: hidden;
+}
+.right {
+    height: 50px;
+    width: 50px;
+    background-color: green;
+    border: 1px solid black;
+    position: absolute;
+    left: 175px;
+    top: 75px;
+    z-index: 10;
+    visibility: hidden;
+}
+#div1 {
+    width: 100%;
+    height: 750px;
+    padding: 10px;
+    border: 1px solid #aaaaaa;
+  }
+
+nav{
+    padding: 100px;
+    background-color: gray;
+}
