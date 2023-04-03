@@ -100,4 +100,9 @@ VALUES  ('alumnounouno@alumno.com', '1111', 'nombre uno', 'apellido uno', 'a1111
         ('alumnocincouno@alumno.com', '1111', 'nombre cinco', 'apellido uno', 'a7777', 'cinco');
 
 INSERT INTO `profesor` (`email`,`password`,`nombre` , `apellido`, `recovery_token`,`id_centro`)
-VALUES ('profesoruno@')
+VALUES  ('profesoruno@profesor.com', '1111', 'nombre uno', 'apellido', 'p1111', 'uno'),
+        ('profesordos@profesor.com', '2222', 'nombre dos', 'apellido', 'p2222', 'dos'),
+        ('profesortres@profesor.com', '3333', 'nombre tres', 'apellido', 'p3333', 'tres'),
+        ('profesorcuatro@profesor.com', '4444', 'nombre cuatro', 'apellido', 'p4444', 'cuatro'),
+        ('profesorcinco@profesor.com', '5555', 'nombre cinco', 'apellido', 'p5555', 'cinco')
+
