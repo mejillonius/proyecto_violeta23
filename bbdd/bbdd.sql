@@ -24,7 +24,7 @@ CREATE TABLE `alumno` (
     `recovery_token` VARCHAR(50) NULL ,
     `id_centro` VARCHAR(40) NOT NULL,
     PRIMARY KEY (`email`),
-    FOREIGN KEY (`id_centro`) REFERENCES `centro`(`id`)
+    FOREIGN KEY (`id_centro`) REFERENCES `centro`(`id`) ON DELETE CASCADE
 ) ENGINE = InnoDB;
 
 
@@ -37,7 +37,7 @@ CREATE TABLE `profesor`(
     `recovery_token` VARCHAR(50) NULL ,
     `id_centro`VARCHAR(40),
     PRIMARY KEY (`email`),
-    Foreign Key (`id_centro`) REFERENCES `centro`(`id`)
+    Foreign Key (`id_centro`) REFERENCES `centro`(`id`) ON DELETE CASCADE
 );
 
 
@@ -57,7 +57,7 @@ CREATE TABLE `practica`(
 DROP TABLE IF EXISTS `instancia`;
 CREATE TABLE `instancia` (
     `id` VARCHAR (20) NOT NULL,
-    `id_profe` VARCHAR(40) NOT NULL,
+    `id_profe` VARCHAR(40),
     `id_practica` VARCHAR (20) NOT NULL,
     `creacion` DATE,
     `fecha_limite` DATE,
@@ -71,7 +71,7 @@ CREATE TABLE `instancia` (
 DROP TABLE IF EXISTS `aula`;
 CREATE TABLE `aula`(
     `id_alumno` VARCHAR(40),
-    `id_instancia` VARCHAR(20),
+    `id_instancia` VARCHAR(20) NOT NULL,
     `visto` BOOLEAN,
     `completado` BOOLEAN,
     `feedback` TEXT,
@@ -104,5 +104,11 @@ VALUES  ('profesoruno@profesor.com', '1111', 'nombre uno', 'apellido', 'p1111', 
         ('profesordos@profesor.com', '2222', 'nombre dos', 'apellido', 'p2222', 'dos'),
         ('profesortres@profesor.com', '3333', 'nombre tres', 'apellido', 'p3333', 'tres'),
         ('profesorcuatro@profesor.com', '4444', 'nombre cuatro', 'apellido', 'p4444', 'cuatro'),
-        ('profesorcinco@profesor.com', '5555', 'nombre cinco', 'apellido', 'p5555', 'cinco')
+        ('profesorcinco@profesor.com', '5555', 'nombre cinco', 'apellido', 'p5555', 'cinco');
+
+INSERT INTO `practica`(`id`,`titulo`,`downloads`,`rating`,`guion`,`autor`)
+VALUES ('1','evaporacion',0,2.5,'{"guion":"guion"}','profesoruno@profesor.com')
+
+
+
 
