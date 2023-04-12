@@ -1,4 +1,4 @@
--- Active: 1675263800707@@127.0.0.1@3306@proyecto
+-- Active: 1681321158373@@127.0.0.1@3306@phpmyadmin
 DROP DATABASE IF EXISTS `proyecto`;
 CREATE DATABASE  `proyecto`
     DEFAULT CHARACTER SET = `utf8mb4`;
