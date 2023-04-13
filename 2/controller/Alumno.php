@@ -124,6 +124,10 @@ class Alumno {
 		return $this;
 	}
 
+	public function getAlumno($email){
+		return Consultas::getAlumno($bd,$email);
+	}
+
         public function __construct($email,$password,$nombre,$apellido, $id_centro, $recovery_token = null){
 
         $this->setEmail($email);

@@ -19,5 +19,5 @@ spl_autoload_register("incluirClases");
 $bd = new BaseMysql();
 $tpl = new MontaTpls();
 $tpl->montaTpls();
-echo(User::userExists($bd,"centrocinco@centro.edu")?"existe":"no existe");
-var_dump(User::getProfesor($bd,"profesorcinco@profesor.com"));
+
+

@@ -20,9 +20,31 @@ echo(LOADDEBUG?"Template ":"");
 <body> 
     
 <?php
-require("tpls/logo.php");
-require("tpls/nav.php");
+    require("tpls/logo.php");
+    require("tpls/nav.php");
+
+    $rutas = [];
+    if (isset($_GET["tpls"])) {
+        $rutas = explode("/", $_GET["tpls"]);
+        var_dump($_GET);
+        if (
+            $rutas[0] == "inicio" ||
+            $rutas[0] == "pdcadmin" ||
+            $rutas[0] == "pdcalumno" ||
+            $rutas[0] == "pdccentro" ||
+            $rutas[0] == "pdcprofesor" ||
+            $rutas[0] == "recovery" ||
+            $rutas[0] == "laboratorio"
+        ) {
+            include "tpls/".$rutas[0].".php";
+        } else {
+            include "tpls/error404.php";
+        }
+    } else {
+        include "tpls/inicio.php";
+    }
 ?>
+
 
 
 </main>
