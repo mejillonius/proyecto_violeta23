@@ -124,7 +124,7 @@ class Alumno {
 		return $this;
 	}
 
-	public function getAlumno($email){
+	static public function getAlumno($bd,$email){
 		return Consultas::getAlumno($bd,$email);
 	}
 

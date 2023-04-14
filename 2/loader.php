@@ -20,4 +20,3 @@ $bd = new BaseMysql();
 $tpl = new MontaTpls();
 $tpl->montaTpls();
 
-
