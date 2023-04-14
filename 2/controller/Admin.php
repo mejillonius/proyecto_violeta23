@@ -1,6 +1,6 @@
 <?php
-echo(LOADDEBUG?"Debug loader Centro <br> ":"");
-class Centro {
+echo(LOADDEBUG?"Debug loader Admin <br>":"");
+class Admin {
     private $id;
     private $email;
     private $password;

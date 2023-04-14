@@ -1,8 +1,19 @@
--- Active: 1681321158373@@127.0.0.1@3306@phpmyadmin
+-- Active: 1675263800707@@127.0.0.1@3306@proyecto
 DROP DATABASE IF EXISTS `proyecto`;
 CREATE DATABASE  `proyecto`
     DEFAULT CHARACTER SET = `utf8mb4`;
 USE `proyecto`;
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin` (
+    `id`VARCHAR(40) NOT NULL,
+    `email` VARCHAR(40) NOT NULL,
+    `password`VARCHAR(50) NOT NULL,
+    `nombre` VARCHAR (80),
+    `recovery_token` VARCHAR(50) NULL,
+    PRIMARY KEY (`id`)
+
+);
+
 
 DROP TABLE IF EXISTS `centro`;
 CREATE TABLE `centro` (
@@ -80,7 +91,8 @@ CREATE TABLE `aula`(
     Foreign Key (`id_alumno`) REFERENCES `alumno`(`email`)
 );
 
-
+INSERT INTO `admin` (`id`, `email`, `password`, `nombre`, `recovery_token`)
+VALUES ('uno', 'liaburns@hotmail.com', 'admin', 'admninistrador', 'r1111');
 
 INSERT INTO `centro` (`id`, `email`, `password`, `nombre`, `recovery_token`) 
 VALUES  ('uno', 'centrouno@centro.edu', 'uno', 'centro uno', 'c1111'), 

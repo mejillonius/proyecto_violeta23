@@ -1,5 +1,5 @@
 <?php
-echo(LOADDEBUG?"MontaTpls ":"");
+echo(LOADDEBUG?"Loader debug MontaTPLS ":"");
 
 class MontaTpls
 {

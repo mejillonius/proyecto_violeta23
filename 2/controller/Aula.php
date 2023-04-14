@@ -1,5 +1,5 @@
 <?php
-echo(LOADDEBUG?"Aula ":"");
+echo(LOADDEBUG?"Debug loader Aula <br>":"");
 class Aula {
     private $id_alumno;
     private $id_instancia;

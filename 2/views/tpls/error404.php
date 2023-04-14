@@ -1,4 +1,5 @@
 <?php
+echo(LOADDEBUG?"Debug loader 404 <br> ":"");
 ?>
 
 <div class="text-center">

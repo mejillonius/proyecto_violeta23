@@ -1,5 +1,5 @@
 <?php
-echo(LOADDEBUG?"Template ":"");
+echo(LOADDEBUG?"Loader debug Template ":"");
 
 ?>
 
@@ -26,7 +26,7 @@ echo(LOADDEBUG?"Template ":"");
     $rutas = [];
     if (isset($_GET["tpls"])) {
         $rutas = explode("/", $_GET["tpls"]);
-        var_dump($_GET);
+        printvar($_GET);
         if (
             $rutas[0] == "inicio" ||
             $rutas[0] == "pdcadmin" ||

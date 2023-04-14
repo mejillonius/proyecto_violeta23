@@ -1,6 +1,6 @@
 <?php
 
-echo(LOADDEBUG?"Instancia ":"");
+echo(LOADDEBUG?"Debug loader Instancia <br> ":"");
 
 class Instancia {
     private $id;

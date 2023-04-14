@@ -1,6 +1,6 @@
 <?php 
 
-echo(LOADDEBUG?"Conf ":"");
+echo(LOADDEBUG?"Debug loader Practica <br> ":"");
 
 class Practica {
     private $id;

@@ -1,6 +1,6 @@
 <?php
 
-echo(LOADDEBUG?"Profesor ":"");
+echo(LOADDEBUG?"Debug loader Profesor <br> ":"");
 
 class Profesor {
     private $email;

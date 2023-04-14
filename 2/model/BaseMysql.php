@@ -1,6 +1,6 @@
 <?PHP
 
-echo(LOADDEBUG?"Sql ":"");
+echo(LOADDEBUG?"Debug loader BaseMysql <br> ":"");
 
 class BaseMysql extends PDO
 {
