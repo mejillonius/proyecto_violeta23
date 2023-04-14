@@ -1,7 +1,7 @@
 <?php
 
 
-define("LOADDEBUG",true);
+define("LOADDEBUG",false);
 echo(LOADDEBUG?"Debug ":"");
 
 define("ALUMNODEBUG",false);
@@ -9,7 +9,7 @@ define("CENTRODEBUG",false);
 define("PROFESORDEBUG",false);
 define("VARDUMPDEBUG",true);
 
-define("TESTDEBUG", true);
+define("TESTDEBUG", false);
 
 
 function printvar($var){

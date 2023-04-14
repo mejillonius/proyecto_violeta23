@@ -64,14 +64,14 @@ class Consultas {
         $alumno = $query->fetch(PDO::FETCH_ASSOC);      
         if ($alumno != false)
         {
-            return new Alumno($alumno['email'],$alumno['password'],$alumno['nombre'],$alumno['apellido'],$alumno['recovery_token'],$alumno['id_centro']);
+            return new Alumno($alumno['email'],$alumno['password'],$alumno['nombre'],$alumno['apellido'],$alumno['id_centro'],$alumno['recovery_token']);
         } else {
             return false;
         };         
     }
 
     static public function createAlumno($bd,$alumno){
-        $sql = "INSERT INTO `alumno` (email, password, nombre, apellido, recovery_token, id_centro) VALUES (:email, :password, :nombre, :apellido, :recovery_token, id_centro);";
+        $sql = "INSERT INTO `alumno`(`email`, `password`, `nombre`, `apellido`, `recovery_token`, `id_centro`) VALUES (:email,:password,:nombre,:apellido,:recovery_token,:id_centro)";
         $query = $bd->prepare($sql);
         $query->bindValue(':email', $alumno->getEmail(), PDO::PARAM_STR);
         $query->bindValue(':password', $alumno->getPassword(), PDO::PARAM_STR);
@@ -79,8 +79,7 @@ class Consultas {
         $query->bindValue(':apellido', $alumno->getApellido(), PDO::PARAM_STR);
         $query->bindValue(':recovery_token', $alumno->getRecovery_token(), PDO::PARAM_STR);
         $query->bindValue(':id_centro', $alumno->getId_centro(), PDO::PARAM_STR);
-        $query->execute();
-        return $query;
+        return $query->execute();
     }
 
     static public function updateAlumno($bd,$alumno){
@@ -93,16 +92,14 @@ class Consultas {
         $query->bindValue(':recovery_token', $alumno->getRecovery_token(), PDO::PARAM_STR);
         $query->bindValue(':id_centro', $alumno->getId_centro(), PDO::PARAM_STR);
         $query->bindValue(':email2', $alumno->getEmail());
-        $query->execute();
-        return $query;
+        return $query->execute();
     }
 
     static public function deleteAlumno($bd,$email){
         $sql = "DELETE FROM `alumno` WHERE email = :email;";
         $query = $bd->prepare($sql);
         $query->bindValue(':email',$email);
-        $query->execute();
-        return $query;
+        return $query->execute();
     }
 
     static public function getAula($bd,$id_alumno,$id_instancia){
@@ -127,8 +124,8 @@ class Consultas {
         $query->bindValue(':visto', $aula->getVisto(), PDO::PARAM_BOOL);
         $query->bindValue(':completado', $aula->getCompletado(), PDO::PARAM_BOOL);
         $query->bindValue(':feedback', $aula->getFeedback(), PDO::PARAM_STR);
-        $query->execute();
-        return $query;
+        return $query->execute();
+
     }
     static public function updateAula($bd, $aula){
         $sql = 'UPDATE `aula` SET `id_alumno`=:id_alumno ,`id_instancia`=:id_instancia,`visto`=:id_visto,`completado`=:completado,`feedback`=:feedback WHERE `id_alumno`=:id_alumno2 AND `id_instancia`=:id_instancia2';
@@ -140,8 +137,8 @@ class Consultas {
         $query->bindValue(':feedback', $aula->getFeedback(), PDO::PARAM_STR);
         $query->bindValue(':id_alumno2', $aula->getId_alumno(), PDO::PARAM_STR);
         $query->bindValue(':id_instancia2', $aula->getId_instancia(), PDO::PARAM_STR);
-        $query->execute();
-        return $query;
+        return $query->execute();
+
     }
 
     static public function deleteAula($bd,$id_alumno,$id_instancia){
@@ -149,8 +146,7 @@ class Consultas {
         $query = $bd->prepare($sql);
         $query->bindValue(':id_alumno', $id_alumno);
         $query->bindValue(':id_instancia', $id_instancia);
-        $query->execute();
-        return $query;        
+        return $query->execute();       
     }
 
 
@@ -169,15 +165,34 @@ class Consultas {
     }
 
     static public function createCentro($bd,$centro){
-        // TODO
+        $sql = "INSERT INTO `centro`(`id`, `email`, `password`, `nombre`, `recovery_token`) VALUES (:id,:email,:password,:nombre,:recovery_token)";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':id', $centro->getId(), PDO::PARAM_STR);
+        $query->bindValue(':email', $centro->getEmail(), PDO::PARAM_STR);
+        $query->bindValue(':password', $centro->getpassword(), PDO::PARAM_STR);
+        $query->bindValue(':nombre', $centro->getNombre(), PDO::PARAM_STR);
+        $query->bindValue(':recovery_token', $centro->getrecovery_token(), PDO::PARAM_STR);
+
+        return $query->execute();
     }
 
     static public function updateCentro($bd,$centro){
-        // TODO
+        $sql = "UPDATE `centro` SET id = :id, email = :email, password = :password, nombre = :nombre, recovery_token = :recovery_token WHERE email = :email2";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':id', $centro->getId(), PDO::PARAM_STR);
+        $query->bindValue(':email', $centro->getEmail(), PDO::PARAM_STR);
+        $query->bindValue(':password', $centro->getPassword(), PDO::PARAM_STR);
+        $query->bindValue(':nombre', $centro->getNombre(), PDO::PARAM_STR);
+        $query->bindValue(':recovery_token', $centro->getRecovery_token(), PDO::PARAM_STR);
+        $query->bindValue(':email2', $centro->getEmail());
+        return $query->execute();
     }
 
     static public function deleteCentro ($bd,$email){
-        // TODO
+        $sql = "DELETE FROM `centro` WHERE email = :email;";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':email',$email);
+        return $query->execute();
     }
 
     static public function getInstancia($bd, $id){

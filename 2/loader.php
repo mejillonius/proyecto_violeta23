@@ -10,9 +10,7 @@ function incluirClases($nomClase)
        require_once(__DIR__."/model/".$nomClase.".php");
     } else if (file_exists(__DIR__ . "/controller/" . $nomClase . ".php") === true) {
               require_once(__DIR__ . "/controller/" . $nomClase . ".php");
-    } else if (file_exists(__DIR__ . "/testing/" . $nomClase . ".php") === true ) {
-              require_once(__DIR__ . "/testing/" . $nomClase . ".php");
-    }else {
+    } else {
         require_once(__DIR__ . "/views/" . $nomClase . ".php");
     }
 
@@ -26,4 +24,6 @@ $bd = new BaseMysql();
 $tpl = new MontaTpls();
 $tpl->montaTpls();
 
-testAlumno();
+if (TESTDEBUG == true){
+    testAlumno();
+}

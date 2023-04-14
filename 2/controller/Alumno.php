@@ -10,7 +10,7 @@ class Alumno {
     private $recovery_token;
     private $id_centro;
 
-    public function verificaEmail($email){
+    private function verificaEmail($email){
         $email = trim($email);
         if(filter_var($email, FILTER_VALIDATE_EMAIL)) {
             echo(ALUMNODEBUG?"email valido":"");
@@ -127,6 +127,30 @@ class Alumno {
 	static public function getAlumno($bd,$email){
 		return Consultas::getAlumno($bd,$email);
 	}
+
+	static public function createAlumno($bd, $alumno){
+		return Consultas::createAlumno($bd, $alumno);
+	}
+
+	static public function updateAlumno($bd, $alumno){
+		return Consultas::updateAlumno($bd, $alumno);
+	}
+	static public function deleteAlumno($bd,$email){
+		return Consultas::deleteAlumno($bd, $email);
+	}
+
+	public function createThisAlumno($bd){
+		return Consultas::createAlumno($bd, $this);
+	}
+
+	public function updateThisAlumno($bd){
+		return Consultas::updateAlumno($bd,$this);
+	}
+	public function deleteThisAlumno($bd){
+		return Consultas::deleteAlumno($bd, $this->getEmail());
+	}
+
+
 
         public function __construct($email,$password,$nombre,$apellido, $id_centro, $recovery_token = null){
 
