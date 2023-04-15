@@ -44,16 +44,49 @@ class Consultas {
     }
 
     static public function getAdmin($bd,$email){
-        // TODO
+        $sql = "SELECT * FROM `admin` WHERE email = :email1";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':email1', $email);  
+        $query->execute();
+        $admin = $query->fetch(PDO::FETCH_ASSOC);      
+        if ($admin != false)
+        {
+            return new Admin($admin['id'],
+                             $admin['email'],
+                             $admin['password'],
+                             $admin['nombre'],
+                             $admin['recovery_token']);
+        } else {
+            return false;
+        };  
     }
     static public function createAdmin($bd,$admin){
-        // TODO
+        $sql = "INSERT INTO `admin`(`id`, `email`, `password`, `nombre`, `recovery_token`) VALUES (:id,:email,:password,:nombre,:recovery_token)";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':id', $admin->getId(), PDO::PARAM_STR);
+        $query->bindValue(':email', $admin->getEmail(), PDO::PARAM_STR);
+        $query->bindValue(':password', $admin->getpassword(), PDO::PARAM_STR);
+        $query->bindValue(':nombre', $admin->getNombre(), PDO::PARAM_STR);
+        $query->bindValue(':recovery_token', $admin->getrecovery_token(), PDO::PARAM_STR);
+
+        return $query->execute();
     }
     static public function updateAdmin($bd,$admin){
-        // TODO
+        $sql = "UPDATE `admin` SET id = :id, email = :email, password = :password, nombre = :nombre, recovery_token = :recovery_token WHERE email = :email2";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':id', $admin->getId(), PDO::PARAM_STR);
+        $query->bindValue(':email', $admin->getEmail(), PDO::PARAM_STR);
+        $query->bindValue(':password', $admin->getPassword(), PDO::PARAM_STR);
+        $query->bindValue(':nombre', $admin->getNombre(), PDO::PARAM_STR);
+        $query->bindValue(':recovery_token', $admin->getRecovery_token(), PDO::PARAM_STR);
+        $query->bindValue(':email2', $admin->getEmail());
+        return $query->execute();
     }
     static public function deleteAdmin($bd, $email){
-        // TODO
+        $sql = "DELETE FROM `admin` WHERE email = :email;";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':email',$email);
+        return $query->execute();
     }
 
     static public function getAlumno($bd,$email){
@@ -64,7 +97,12 @@ class Consultas {
         $alumno = $query->fetch(PDO::FETCH_ASSOC);      
         if ($alumno != false)
         {
-            return new Alumno($alumno['email'],$alumno['password'],$alumno['nombre'],$alumno['apellido'],$alumno['id_centro'],$alumno['recovery_token']);
+            return new Alumno($alumno['email'],
+                              $alumno['password'],
+                              $alumno['nombre'],
+                              $alumno['apellido'],
+                              $alumno['id_centro'],
+                              $alumno['recovery_token']);
         } else {
             return false;
         };         
@@ -110,7 +148,11 @@ class Consultas {
         $query->execute();
         $aula = $query->fetch(PDO::FETCH_ASSOC);
         if ($aula != false) {
-            return new Aula ($aula['id_alumno'],$aula['id_instancia'],$aula['visto'],$aula['completado'],$aula['feedback']);
+            return new Aula ($aula['id_alumno'],
+                             $aula['id_instancia'],
+                             $aula['visto'],
+                             $aula['completado'],
+                             $aula['feedback']);
         } else {
             return false;
         }
@@ -158,7 +200,11 @@ class Consultas {
         $centro = $query->fetch(PDO::FETCH_ASSOC);      
         if ($centro != false)
         {
-            return new Centro($centro['id'],$centro['email'],$centro['password'],$centro['nombre'],$centro['recovery_token']);
+            return new Centro($centro['id'],
+                              $centro['email'],
+                              $centro['password'],
+                              $centro['nombre'],
+                              $centro['recovery_token']);
         } else {
             return false;
         };         
@@ -196,34 +242,108 @@ class Consultas {
     }
 
     static public function getInstancia($bd, $id){
-        // TODO
+        $sql = "SELECT * FROM `instancia` WHERE id = :id";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':id', $id);  
+        $query->execute();
+        $instancia = $query->fetch(PDO::FETCH_ASSOC);      
+        if ($instancia != false)
+        {
+            return new Instancia($instancia['id'],
+                                 $instancia['id_profesor'],
+                                 $instancia['id_practica'],
+                                 $instancia['creacion'],
+                                 $instancia['fecha_limite'],
+                                 $instancia['estado'],
+                                 $instancia['url']);
+        } else {
+            return false;
+        };   
     }
 
     static public function createInstancia($bd, $instancia){
-        // TODO
+        $sql = "INSERT INTO `instancia`(`id`, `id_profesor`, `id_practica`, `creacion`, `fecha_limite`, `estado`,`url`) VALUES (:id,:id_profesor,:id_practica,:creacion,:fecha_limite,:estado,:url)";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':id', $instancia->getId(), PDO::PARAM_STR);
+        $query->bindValue(':id_profesor', $instancia->getId_profesor(), PDO::PARAM_STR);
+        $query->bindValue(':id_practica', $instancia->getid_practica(), PDO::PARAM_STR);
+        $query->bindValue(':creacion', $instancia->getCreacion(), PDO::PARAM_STR);
+        $query->bindValue(':fecha_limite', $instancia->getFecha_limite(), PDO::PARAM_STR);
+        $query->bindValue(':estado', $instancia->getEstado(), PDO::PARAM_STR);
+        $query->bindValue('url', $instancia->getUrl(), PDO::PARAM_STR);
+        return $query->execute();
     }
     static public function updateInstancia($bd, $instancia){
-        // TODO
+        $sql = "UPDATE `instancia` SET id = :id, id_profesor = :id_profesor, id_practica = :id_practica, creacion = :creacion, fecha_limite = :fecha_limite, estado = :estado, url = :url WHERE id = :id2";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':id', $instancia->getId(), PDO::PARAM_STR);
+        $query->bindValue(':id_profesor', $instancia->getId_profesor(), PDO::PARAM_STR);
+        $query->bindValue(':id_practica', $instancia->getid_practica(), PDO::PARAM_STR);
+        $query->bindValue(':creacion', $instancia->getCreacion(), PDO::PARAM_STR);
+        $query->bindValue(':fecha_limite', $instancia->getFecha_limite(), PDO::PARAM_STR);
+        $query->bindValue(':estado', $instancia->getEstado(), PDO::PARAM_STR);
+        $query->bindValue('url', $instancia->getUrl(), PDO::PARAM_STR);
+        $query->bindValue('id2', $instancia->getId(), PDO::PARAM_STR);
+        return $query->execute();
     }
 
     static public function deleteInstancia($bd, $id){
-        // TODO
+        $sql = "DELETE FROM `instancia` WHERE id = :id;";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':id',$id);
+        return $query->execute();
     }
 
     static public function getPractica($bd, $id){
-        // TODO
+        $sql = "SELECT * FROM `practica` WHERE id = :id";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':id', $id);  
+        $query->execute();
+        $practica = $query->fetch(PDO::FETCH_ASSOC);      
+        if ($practica != false)
+        {
+            return new Practica($practica['id'],
+                                $practica['titulo'],
+                                $practica['downloads'],
+                                $practica['rating'],
+                                $practica['guion'],
+                                $practica['autor']);
+        } else {
+            return false;
+        }; 
     }
 
     static public function createPractica($bd, $practica){
-        // TODO
+        $sql = "INSERT INTO `practica`(`id`, `titulo`, `downloads`, `rating`, `guion`, `autor`) VALUES ( :id, :titulo, :downloads, :rating, :guion, :autor)";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':id', $practica->getId(),PDO::PARAM_STR);
+        $query->bindValue(':titulo', $practica->getTitulo(),PDO::PARAM_STR);
+        $query->bindValue(':downloads', $practica->getDownloads(),PDO::PARAM_INT);
+        $query->bindValue(':rating', $practica->getRating(),PDO::PARAM_INT);
+        $query->bindValue(':guion', $practica->getGuion(),PDO::PARAM_STR);
+        $query->bindValue(':autor', $practica->getAutor(),PDO::PARAM_STR);
+        return $query->execute();
+
     }
 
     static public function updatePractica($bd, $practica){
-        // TODO
+        $sql = "UPDATE `practica` SET `id`=:id,`titulo`=:titulo,`downloads`=:downloads,`rating`=:rating,`guion`=:guion,`autor`=:autor WHERE `id` = :id2";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':id', $practica->getId(),PDO::PARAM_STR);
+        $query->bindValue(':titulo', $practica->getTitulo(),PDO::PARAM_STR);
+        $query->bindValue(':downloads', $practica->getDownloads(),PDO::PARAM_INT);
+        $query->bindValue(':rating', $practica->getRating(),PDO::PARAM_INT);
+        $query->bindValue(':guion', $practica->getGuion(),PDO::PARAM_STR);
+        $query->bindValue(':autor', $practica->getAutor(),PDO::PARAM_STR);
+        $query->bindValue(':id2', $practica->getId(),PDO::PARAM_STR);
+        return $query->execute();
     }
 
     static public function deletePractica($bd, $id){
-        // TODO
+        $sql = "DELETE FROM `practica` WHERE id = :id;";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':id',$id);
+        return $query->execute();
     }
 
     static public function getProfesor($bd,$email){
@@ -234,21 +354,46 @@ class Consultas {
         $profesor = $query->fetch(PDO::FETCH_ASSOC);      
         if ($profesor != false)
         {
-            return new Profesor($profesor['email'],$profesor['password'],$profesor['nombre'],$profesor['apellido'],$profesor['recovery_token'],$profesor['id_centro']);
+            return new Profesor($profesor['email'],
+                                $profesor['password'],
+                                $profesor['nombre'],
+                                $profesor['apellido'],
+                                $profesor['recovery_token'],
+                                $profesor['id_centro']);
         } else {
             return false;
         };         
     }
 
     static public function createProfesor($bd, $profesor){
-        // TODO
+        $sql = "INSERT INTO `profesor`(`email`, `password`, `nombre`, `apellido`, `recovery_token`, `id_centro`) VALUES (:email,:password,:nombre,:apellido,:recovery_token,:id_centro)";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':email', $profesor->getEmail(), PDO::PARAM_STR);
+        $query->bindValue(':password', $profesor->getPassword(), PDO::PARAM_STR);
+        $query->bindValue(':nombre', $profesor->getNombre(), PDO::PARAM_STR);
+        $query->bindValue(':apellido', $profesor->getApellido(), PDO::PARAM_STR);
+        $query->bindValue(':recovery_token', $profesor->getRecovery_token(), PDO::PARAM_STR);
+        $query->bindValue(':id_centro', $profesor->getId_centro(), PDO::PARAM_STR);
+        return $query->execute();
     }
     static public function updateProfesor($bd, $profesor){
-        // TODO
+        $sql = "UPDATE `profesor` SET email = :email, password = :password, nombre = :nombre, apellido = :apellido, recovery_token = :recovery_token, id_centro = :id_centro WHERE email = :email2";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':email', $profesor->getEmail(), PDO::PARAM_STR);
+        $query->bindValue(':password', $profesor->getPassword(), PDO::PARAM_STR);
+        $query->bindValue(':nombre', $profesor->getNombre(), PDO::PARAM_STR);
+        $query->bindValue(':apellido', $profesor->getApellido(), PDO::PARAM_STR);
+        $query->bindValue(':recovery_token', $profesor->getRecovery_token(), PDO::PARAM_STR);
+        $query->bindValue(':id_centro', $profesor->getId_centro(), PDO::PARAM_STR);
+        $query->bindValue(':email2', $profesor->getEmail());
+        return $query->execute();
     }
 
     static public function deleteProfesor($bd, $email){
-        // TODO
+        $sql = "DELETE FROM `profesor` WHERE email = :email;";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':email',$email);
+        return $query->execute();
     }
 
 

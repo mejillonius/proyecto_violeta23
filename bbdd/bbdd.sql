@@ -1,4 +1,4 @@
--- Active: 1675263800707@@127.0.0.1@3306@proyecto
+-- Active: 1681321158373@@127.0.0.1@3306@proyecto
 DROP DATABASE IF EXISTS `proyecto`;
 CREATE DATABASE  `proyecto`
     DEFAULT CHARACTER SET = `utf8mb4`;
@@ -68,14 +68,14 @@ CREATE TABLE `practica`(
 DROP TABLE IF EXISTS `instancia`;
 CREATE TABLE `instancia` (
     `id` VARCHAR (20) NOT NULL,
-    `id_profe` VARCHAR(40),
+    `id_profesor` VARCHAR(40),
     `id_practica` VARCHAR (20) NOT NULL,
     `creacion` DATE,
     `fecha_limite` DATE,
     `estado` BOOLEAN,
     `url` VARCHAR(50) NOT NULL,
     PRIMARY KEY (`id`),
-    Foreign Key (`id_profe`) REFERENCES `profesor`(`email`),
+    Foreign Key (`id_profesor`) REFERENCES `profesor`(`email`),
     Foreign Key (`id_practica`) REFERENCES `practica`(`id`)
 );
 

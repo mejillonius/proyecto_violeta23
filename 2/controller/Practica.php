@@ -112,7 +112,12 @@ class Practica {
 		return $this;
 	}
 
-    public function __construct($id,$titulo,$downloads,$rating,$guion,$autor){
+    public function __construct($id,
+								$titulo,
+								$downloads,
+								$rating,
+								$guion,
+								$autor){
         $this->setId($id);
         $this->setTitulo($titulo);
         $this->setDownloads($downloads);

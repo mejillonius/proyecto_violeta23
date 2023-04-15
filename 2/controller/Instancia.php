@@ -4,7 +4,7 @@ echo(LOADDEBUG?"Debug loader Instancia <br> ":"");
 
 class Instancia {
     private $id;
-    private $id_profe;
+    private $id_profesor;
     private $id_practica;
     private $creacion;
     private $fecha_limite;
@@ -30,16 +30,16 @@ class Instancia {
 	/**
 	 * @return mixed
 	 */
-	public function getId_profe() {
-		return $this->id_profe;
+	public function getId_profesor() {
+		return $this->id_profesor;
 	}
 	
 	/**
-	 * @param mixed $id_profe 
+	 * @param mixed $id_profesor 
 	 * @return self
 	 */
-	public function setId_profe($id_profe): self {
-		$this->id_profe = $id_profe;
+	public function setId_profesor($id_profesor): self {
+		$this->id_profesor = $id_profesor;
 		return $this;
 	}
 
@@ -108,7 +108,7 @@ class Instancia {
 	}
 
     public function generarUrl(){
-        return md5($this->id.$this->id_profe.$this->id_practica);
+        return md5($this->id.$this->id_profesor.$this->id_practica);
     }
 	/**
 	 * @return mixed
@@ -129,12 +129,19 @@ class Instancia {
 		return $this;
 	}
 
-    public function __construct($id,$id_profe,$id_practica,$creacion,$fecha_limite,$estado,$url = null){
+    public function __construct($id,
+								$id_profesor,
+								$id_practica,
+								$creacion,
+								$fecha_limite,
+								$estado,
+								$url = null){
         $this->setId($id);
-        $this->setId_profe($id_profe);
+        $this->setId_profesor($id_profesor);
         $this->setid_practica($id_practica);
         $this->setCreacion($creacion);
-        $this->setCreacion($creacion);
+        $this->setCreacion($fecha_limite);
+		$this->setEstado($estado);
         $this->setUrl($url);
 
     }

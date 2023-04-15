@@ -12,13 +12,15 @@ echo(LOADDEBUG?"Debug loader Maintest <br> ":"");
     test de Profesor
 
      */
+/*     
     $adminTestValido = new Admin("idtest", "admin@test.com", "test", "test");
     $alumnoTestValido = new Alumno("alumno@test.com","test","alumno","test","uno");
     $aulaTestValido = new Aula("alumno@test.com","idtest", true, true, "feedback test");
     $centroTestvalido = new Centro("idtest", "centro@test.com", "test", "test");
     $instanciaTestValido = new Instancia("idtest", "profesor@test.com", "idtest", "01/01/2019", "01/01/2019", 4, "testURL");
     $practicaTestValido = new Practica("idtest", "titulo test", 5, 5, "guiontest", "profesor@test.com");
-    $profesorTestValido = new Profesor("profesor@test.com","test","alumno","test","uno");
+    $profesorTestValido = new Profesor("profesor@test.com","test","alumno","test","uno"); 
+*/
      
 
     function testAlumno(){
@@ -48,5 +50,11 @@ echo(LOADDEBUG?"Debug loader Maintest <br> ":"");
 
     function testAula(){
         $bd = new BaseMysql();
+        $alumnoTestValido = new Alumno("alumno@test.com","test","alumno","test","uno");
+        $instanciaTestValido = new Instancia("idtest", "profesor@test.com", "idtest", "01/01/2019", "01/01/2019", 4, "testURL");
+        $aulaTestValido = new Aula("alumno@test.com","idtest", true, true, "feedback test");
+    }
 
+    function testcentro(){
+        $centroTestvalido = new Centro("idtest", "centro@test.com", "test", "test");
     }
