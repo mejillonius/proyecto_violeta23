@@ -22,7 +22,6 @@ class Consultas {
             return false;
         }; 
     }
-
     static public function typeOfUser ($bd, $email){
         $sql = 'SELECT email, "profesor" AS `tipo` FROM `profesor` WHERE email = ":email1"
         UNION SELECT email, "centro" AS `tipo` FROM `centro` WHERE email = ":email2"
@@ -42,7 +41,6 @@ class Consultas {
             return false;
         };                
     }
-
     static public function getAdmin($bd,$email){
         $sql = "SELECT * FROM `admin` WHERE email = :email1";
         $query = $bd->prepare($sql);
@@ -88,7 +86,6 @@ class Consultas {
         $query->bindValue(':email',$email);
         return $query->execute();
     }
-
     static public function getAlumno($bd,$email){
         $sql = "SELECT * FROM `alumno` WHERE email = :email1";
         $query = $bd->prepare($sql);
@@ -107,7 +104,6 @@ class Consultas {
             return false;
         };         
     }
-
     static public function createAlumno($bd,$alumno){
         $sql = "INSERT INTO `alumno`(`email`, `password`, `nombre`, `apellido`, `recovery_token`, `id_centro`) VALUES (:email,:password,:nombre,:apellido,:recovery_token,:id_centro)";
         $query = $bd->prepare($sql);
@@ -119,7 +115,6 @@ class Consultas {
         $query->bindValue(':id_centro', $alumno->getId_centro(), PDO::PARAM_STR);
         return $query->execute();
     }
-
     static public function updateAlumno($bd,$alumno){
         $sql = "UPDATE `alumno` SET email = :email, password = :password, nombre = :nombre, apellido = :apellido, recovery_token = :recovery_token, id_centro = :id_centro WHERE email = :email2";
         $query = $bd->prepare($sql);
@@ -132,14 +127,12 @@ class Consultas {
         $query->bindValue(':email2', $alumno->getEmail());
         return $query->execute();
     }
-
     static public function deleteAlumno($bd,$email){
         $sql = "DELETE FROM `alumno` WHERE email = :email;";
         $query = $bd->prepare($sql);
         $query->bindValue(':email',$email);
         return $query->execute();
     }
-
     static public function getAula($bd,$id_alumno,$id_instancia){
         $sql = "SELECT * FROM `aula` WHERE `id_alumno` = :id_alumno AND `id_instancia` = :id_instancia";
         $query = $bd->prepare($sql);
@@ -157,7 +150,6 @@ class Consultas {
             return false;
         }
     }
-
     static public function createAula($bd, $aula) {
         $sql = 'INSERT INTO `aula`(`id_alumno`, `id_instancia`, `visto`, `completado`, `feedback`) VALUES (:id_alumno, :id_instancia, :visto , :completado, :feedback);';
         $query = $bd->prepare($sql);
@@ -170,19 +162,18 @@ class Consultas {
 
     }
     static public function updateAula($bd, $aula){
-        $sql = 'UPDATE `aula` SET `id_alumno`=:id_alumno ,`id_instancia`=:id_instancia,`visto`=:id_visto,`completado`=:completado,`feedback`=:feedback WHERE `id_alumno`=:id_alumno2 AND `id_instancia`=:id_instancia2';
+        $sql = "UPDATE `aula` SET id_alumno = :id_alumno,id_instancia = :id_instancia, visto = :visto , completado = :completado ,feedback = :feedback WHERE id_alumno = :id_alumno2 AND id_instancia = :id_instancia2";
         $query = $bd->prepare($sql);
-        $query->bindValue(':id_alumno', $aula->getId_alumno(), PDO::PARAM_STR);
-        $query->bindValue(':id_instancia', $aula->getId_instancia(), PDO::PARAM_STR);
-        $query->bindValue(':visto', $aula->getVisto(), PDO::PARAM_BOOL);
-        $query->bindValue(':completado', $aula->getCompletado(), PDO::PARAM_BOOL);
-        $query->bindValue(':feedback', $aula->getFeedback(), PDO::PARAM_STR);
-        $query->bindValue(':id_alumno2', $aula->getId_alumno(), PDO::PARAM_STR);
-        $query->bindValue(':id_instancia2', $aula->getId_instancia(), PDO::PARAM_STR);
+        $query->bindValue(':id_alumno', $aula->getId_alumno());
+        $query->bindValue(':id_instancia', $aula->getId_instancia());
+        $query->bindValue(':visto', $aula->getVisto());
+        $query->bindValue(':completado', $aula->getCompletado());
+        $query->bindValue(':feedback', $aula->getFeedback());
+        $query->bindValue(':id_alumno2', $aula->getId_alumno());
+        $query->bindValue(':id_instancia2', $aula->getId_instancia());
         return $query->execute();
 
     }
-
     static public function deleteAula($bd,$id_alumno,$id_instancia){
         $sql = 'DELETE FROM `aula` WHERE `id_alumno` = :id_alumno AND `id_instancia` = :id_instancia';
         $query = $bd->prepare($sql);
@@ -190,8 +181,6 @@ class Consultas {
         $query->bindValue(':id_instancia', $id_instancia);
         return $query->execute();       
     }
-
-
     static public function getCentro($bd,$email){
         $sql = "SELECT * FROM `centro` WHERE email = :email1";
         $query = $bd->prepare($sql);
@@ -209,7 +198,6 @@ class Consultas {
             return false;
         };         
     }
-
     static public function createCentro($bd,$centro){
         $sql = "INSERT INTO `centro`(`id`, `email`, `password`, `nombre`, `recovery_token`) VALUES (:id,:email,:password,:nombre,:recovery_token)";
         $query = $bd->prepare($sql);
@@ -221,7 +209,6 @@ class Consultas {
 
         return $query->execute();
     }
-
     static public function updateCentro($bd,$centro){
         $sql = "UPDATE `centro` SET id = :id, email = :email, password = :password, nombre = :nombre, recovery_token = :recovery_token WHERE email = :email2";
         $query = $bd->prepare($sql);
@@ -233,14 +220,12 @@ class Consultas {
         $query->bindValue(':email2', $centro->getEmail());
         return $query->execute();
     }
-
     static public function deleteCentro ($bd,$email){
         $sql = "DELETE FROM `centro` WHERE email = :email;";
         $query = $bd->prepare($sql);
         $query->bindValue(':email',$email);
         return $query->execute();
     }
-
     static public function getInstancia($bd, $id){
         $sql = "SELECT * FROM `instancia` WHERE id = :id";
         $query = $bd->prepare($sql);
@@ -260,7 +245,6 @@ class Consultas {
             return false;
         };   
     }
-
     static public function createInstancia($bd, $instancia){
         $sql = "INSERT INTO `instancia`(`id`, `id_profesor`, `id_practica`, `creacion`, `fecha_limite`, `estado`,`url`) VALUES (:id,:id_profesor,:id_practica,:creacion,:fecha_limite,:estado,:url)";
         $query = $bd->prepare($sql);
@@ -286,14 +270,12 @@ class Consultas {
         $query->bindValue('id2', $instancia->getId(), PDO::PARAM_STR);
         return $query->execute();
     }
-
     static public function deleteInstancia($bd, $id){
         $sql = "DELETE FROM `instancia` WHERE id = :id;";
         $query = $bd->prepare($sql);
         $query->bindValue(':id',$id);
         return $query->execute();
     }
-
     static public function getPractica($bd, $id){
         $sql = "SELECT * FROM `practica` WHERE id = :id";
         $query = $bd->prepare($sql);
@@ -312,7 +294,6 @@ class Consultas {
             return false;
         }; 
     }
-
     static public function createPractica($bd, $practica){
         $sql = "INSERT INTO `practica`(`id`, `titulo`, `downloads`, `rating`, `guion`, `autor`) VALUES ( :id, :titulo, :downloads, :rating, :guion, :autor)";
         $query = $bd->prepare($sql);
@@ -325,7 +306,6 @@ class Consultas {
         return $query->execute();
 
     }
-
     static public function updatePractica($bd, $practica){
         $sql = "UPDATE `practica` SET `id`=:id,`titulo`=:titulo,`downloads`=:downloads,`rating`=:rating,`guion`=:guion,`autor`=:autor WHERE `id` = :id2";
         $query = $bd->prepare($sql);
@@ -338,14 +318,12 @@ class Consultas {
         $query->bindValue(':id2', $practica->getId(),PDO::PARAM_STR);
         return $query->execute();
     }
-
     static public function deletePractica($bd, $id){
         $sql = "DELETE FROM `practica` WHERE id = :id;";
         $query = $bd->prepare($sql);
         $query->bindValue(':id',$id);
         return $query->execute();
     }
-
     static public function getProfesor($bd,$email){
         $sql = "SELECT * FROM `profesor` WHERE email = :email1";
         $query = $bd->prepare($sql);
@@ -364,7 +342,6 @@ class Consultas {
             return false;
         };         
     }
-
     static public function createProfesor($bd, $profesor){
         $sql = "INSERT INTO `profesor`(`email`, `password`, `nombre`, `apellido`, `recovery_token`, `id_centro`) VALUES (:email,:password,:nombre,:apellido,:recovery_token,:id_centro)";
         $query = $bd->prepare($sql);
@@ -388,15 +365,10 @@ class Consultas {
         $query->bindValue(':email2', $profesor->getEmail());
         return $query->execute();
     }
-
     static public function deleteProfesor($bd, $email){
         $sql = "DELETE FROM `profesor` WHERE email = :email;";
         $query = $bd->prepare($sql);
         $query->bindValue(':email',$email);
         return $query->execute();
-    }
-
-
-
-    
+    }   
 }

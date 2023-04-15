@@ -25,5 +25,5 @@ $tpl = new MontaTpls();
 $tpl->montaTpls();
 
 if (TESTDEBUG == true){
-    testAlumno();
+    mainTest();
 }

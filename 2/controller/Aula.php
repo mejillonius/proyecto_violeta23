@@ -5,7 +5,7 @@ class Aula {
     private $id_instancia;
     private $visto;
     private $completado;
-    private $fedback;
+    private $feedback;
 
 
 	/**
@@ -75,24 +75,24 @@ class Aula {
 	/**
 	 * @return mixed
 	 */
-	public function getFedback() {
-		return $this->fedback;
+	public function getFeedback() {
+		return $this->feedback;
 	}
 	
 	/**
 	 * @param mixed $fedback 
 	 * @return self
 	 */
-	public function setFedback($fedback): self {
-		$this->fedback = $fedback;
+	public function setFeedback($fedback): self {
+		$this->feedback = $fedback;
 		return $this;
 	}
 
-    public function __construct($id_alumno,$id_instancia,$visto,$completado,$fedback){
+    public function __construct($id_alumno,$id_instancia,$visto,$completado,$feedback){
         $this->setId_alumno($id_alumno);
         $this->setId_instancia($id_instancia);
         $this->setVisto($visto);
         $this->setCompletado($completado);
-        $this->setFedback($fedback);
+        $this->setFeedback($feedback);
     }
 }

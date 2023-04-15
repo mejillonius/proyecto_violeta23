@@ -58,7 +58,7 @@ CREATE TABLE `practica`(
     `titulo` VARCHAR (100) NOT NULL,
     `downloads` INT DEFAULT 0,
     `rating` FLOAT (3,1),
-    `guion` JSON,
+    `guion` LONGTEXT,
     `autor` VARCHAR(40),
     PRIMARY KEY (`id`),
     Foreign Key (`autor`) REFERENCES `profesor`(`email`) ON DELETE SET NULL

@@ -48,13 +48,95 @@ echo(LOADDEBUG?"Debug loader Maintest <br> ":"");
   
     }
 
-    function testAula(){
+    function mainTest() {
         $bd = new BaseMysql();
+        $adminTestValido = new Admin("idtest", "admin@test.com", "test", "test");
         $alumnoTestValido = new Alumno("alumno@test.com","test","alumno","test","uno");
-        $instanciaTestValido = new Instancia("idtest", "profesor@test.com", "idtest", "01/01/2019", "01/01/2019", 4, "testURL");
         $aulaTestValido = new Aula("alumno@test.com","idtest", true, true, "feedback test");
+        $centroTestvalido = new Centro("idtest", "centro@test.com", "test", "test");
+        $instanciaTestValido = new Instancia("idtest", "profesor@test.com", "idtest", "01/01/2019", "01/01/2019", 4, "testURL");
+        $practicaTestValido = new Practica("idtest", "titulo test", 5, 5, "{guiontest: 'guion'}", "profesor@test.com");
+        $profesorTestValido = new Profesor("profesor@test.com","test","alumno","test","uno"); 
+
+
+        /* bloque de creacion */
+        printvar(Consultas::createAdmin($bd,$adminTestValido));
+        printvar(Consultas::createCentro($bd,$centroTestvalido));
+        printvar(Consultas::createAlumno($bd,$alumnoTestValido));
+        printvar(Consultas::createProfesor($bd,$profesorTestValido));
+        printvar(Consultas::createPractica($bd,$practicaTestValido));
+        printvar(Consultas::createInstancia($bd,$instanciaTestValido));
+        printvar(Consultas::createAula($bd,$aulaTestValido));
+        /* bloque de gets */
+        printvar("bloque de gets");
+        printvar(Consultas::getAdmin($bd, "admin@test.com"));
+        printvar(Consultas::getAlumno($bd, "alumno@test.com"));
+        printvar(Consultas::getAula($bd, "alumno@test.com","idtest"));
+        printvar(Consultas::getCentro($bd, "centro@test.com"));
+        printvar(Consultas::getInstancia($bd, "idtest"));
+        printvar(Consultas::getPractica($bd, "idtest"));
+        printvar(Consultas::getProfesor($bd, "profesor@test.com"));
+        /* bloque de update */
+
+        printvar("bloque de updates");
+        printvar("update de admin");
+        $copiaDeAdmin = $adminTestValido;
+        $copiaDeAdmin->setNombre("update");
+        printvar(Consultas::updateAdmin($bd,$copiaDeAdmin));
+        printvar(Consultas::getAdmin($bd, "admin@test.com"));
+
+        printvar("update de alumno");
+        $copiaDeAlumno = $alumnoTestValido;
+        $copiaDeAlumno->setNombre("update");
+        printvar(Consultas::updateAlumno($bd,$copiaDeAlumno));
+        printvar(Consultas::getAlumno($bd, "alumno@test.com"));
+
+        printvar("update de aula");
+        $copiaDeaula = $aulaTestValido;
+        $copiaDeaula->setFeedback("update");
+        printvar(Consultas::updateAula($bd,$copiaDeaula));
+
+        printvar("update de centro");
+        $copiaDeCentro = $centroTestvalido;
+        $copiaDeCentro->setNombre("update");
+        printvar(Consultas::updateCentro($bd,$copiaDeCentro));
+        printvar(Consultas::getCentro($bd, "centro@test.com"));
+
+        printvar("update de instancia");
+        $copiaDeInstancia = $instanciaTestValido;
+        $copiaDeInstancia->setEstado(false);
+        printvar(Consultas::updateInstancia($bd,$copiaDeInstancia));
+        printvar(Consultas::getInstancia($bd, "idtest"));
+
+        printvar("update de practica");
+        $copiaDePractica = $practicaTestValido;
+        $practicaTestValido->setDownloads(4567);
+        printvar(Consultas::updatePractica($bd,$copiaDePractica));
+        printvar(Consultas::getPractica($bd, "idtest"));
+
+        printvar("update de profesor");
+        $copiaDeProfesor = $profesorTestValido;
+        $copiaDeProfesor->setNombre("update");
+        printvar(Consultas::updateProfesor($bd,$copiaDeProfesor));
+        printvar(Consultas::getProfesor($bd, "profesor@test.com"));
+
+        printvar("bloque de deletes");
+        printvar(Consultas::deleteAula($bd,"alumno@test.com","idtest"));
+        printvar(Consultas::deleteInstancia($bd, "idtest"));
+        printvar(Consultas::deletePractica($bd, "idtest"));
+        printvar(Consultas::deleteAdmin($bd,"admin@test.com"));
+        printvar(Consultas::deleteAlumno($bd,"alumno@test.com"));
+        printvar(Consultas::deleteProfesor($bd, "profesor@test.com"));
+        printvar(Consultas::deleteCentro($bd,"centro@test.com"));
+        printvar("comprobacion del borrado");
+        printvar(Consultas::getAdmin($bd, "admin@test.com"));
+        printvar(Consultas::getAlumno($bd, "alumno@test.com"));
+        printvar(Consultas::getAula($bd, "alumno@test.com","idtest"));
+        printvar(Consultas::getCentro($bd, "centro@test.com"));
+        printvar(Consultas::getInstancia($bd, "idtest"));
+        printvar(Consultas::getPractica($bd, "idtest"));
+        printvar(Consultas::getProfesor($bd, "profesor@test.com"));
+
+
     }
 
-    function testcentro(){
-        $centroTestvalido = new Centro("idtest", "centro@test.com", "test", "test");
-    }
