@@ -26,6 +26,7 @@ if (Consultas::userExists($bd,$_POST['email'])){
     printvar("respuesta de login: el usuario no existe");
     echo json_encode("error");
 }
+$bd = null;
 
 header("Refresh:0; url=".url_base);
 
