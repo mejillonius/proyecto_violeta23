@@ -23,10 +23,10 @@ class Consultas {
         }; 
     }
     static public function typeOfUser ($bd, $email){
-        $sql = 'SELECT email, "profesor" AS `tipo` FROM `profesor` WHERE email = ":email1"
-        UNION SELECT email, "centro" AS `tipo` FROM `centro` WHERE email = ":email2"
-        UNION SELECT email, "alumno" AS `tipo` FROM `alumno` WHERE email = ":email3"
-        UNION SELECT email, "admin" AS `tipo` FROM `admin` WHERE email = ":email4";';
+        $sql = 'SELECT email, "profesor" AS `tipo` FROM `profesor` WHERE email = :email1
+        UNION SELECT email, "centro" AS `tipo` FROM `centro` WHERE email = :email2
+        UNION SELECT email, "alumno" AS `tipo` FROM `alumno` WHERE email = :email3
+        UNION SELECT email, "admin" AS `tipo` FROM `admin` WHERE email = :email4;';
         $query = $bd->prepare($sql);
         $query->bindValue(':email1', $email);
         $query->bindValue(':email2', $email);

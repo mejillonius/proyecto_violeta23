@@ -150,7 +150,11 @@ class Alumno {
 		return Consultas::deleteAlumno($bd, $this->getEmail());
 	}
 
-
+	public function toHTML(){
+		return
+		"<tr>
+			<td>";
+	}
 
         public function __construct($email,$password,$nombre,$apellido, $id_centro, $recovery_token = null){
 

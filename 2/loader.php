@@ -18,6 +18,10 @@ function incluirClases($nomClase)
 
 }
 
+/* if(!isset($_SESSION)){
+    session_start();
+    } */
+
 spl_autoload_register("incluirClases");
 
 $bd = new BaseMysql();
@@ -27,3 +31,6 @@ $tpl->montaTpls();
 if (TESTDEBUG == true){
     mainTest();
 }
+
+printvar("sesion", $_SESSION);
+printvar("cookie", $_COOKIE);

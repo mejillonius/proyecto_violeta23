@@ -9,10 +9,16 @@
 
     <div class="container">
 
-        <ul class="nav nav-justified py-2 nav-pills">
-            <li><button id="btnUno">longi</button></li>
-
-        </ul>
+    <form action="controller/login.php" method="POST" id="formulario">
+        <input type="text" name="email" placeholder="email">
+        <input type="text" name="password" placeholder="contraseña">
+        <button type="submit">Enviar</button>
+    </form>
+    <form action="controller/logout.php">
+        <button type="submit">logout</button>
+    </form>
+        
+        <div id="mostra">
 
     </div>
 
@@ -20,36 +26,33 @@
 
 <script>
 
-    let contenido = document.querySelector('#content');
-    let contenidoUno = document.querySelector('#contentUno');
+/* const formulario = document.querySelector("#formulario");
+let result = document.querySelector("#mostra");
 
-    const inicializar = () => {
-        document.querySelector('#btnUno').addEventListener('click', login);
+formulario.addEventListener("submit", function(e){
+    e.preventDefault();
+    
 
-    }
+    let datos = new FormData(formulario);
 
-    document.addEventListener("DOMContentLoaded", inicializar);
+    console.log(datos.get("usuario"));
+    console.log(datos.get("password"));
 
-    const login = () => {
-        Swal.fire({
-            title: 'Login Form',
-            html: `<input type="text" id="login" class="swal2-input" placeholder="Username">
-  <input type="password" id="password" class="swal2-input" placeholder="Password">`,
-            confirmButtonText: 'Sign in',
-            focusConfirm: false,
-            preConfirm: () => {
-                const login = Swal.getPopup().querySelector('#login').value
-                const password = Swal.getPopup().querySelector('#password').value
-                if (!login || !password) {
-                    Swal.showValidationMessage(`Please enter login and password`)
-                }
-                return { login: login, password: password }
-            }
-        }).then((result) => {
-            Swal.fire(`
-    Login: ${result.value.login}
-    Password: ${result.value.password}
-  `.trim())
-        })
-    }
+    fetch("controller/login.php", {
+        method: "POST",
+        body:datos,
+    })
+    .then(response => response.text())
+    .then(response => {
+        console.log("response ".response);
+        if (response == "error") {
+            result.innerHTML = `<div>rellena todos los campos</div>`;
+        } else {
+            console.log (response);
+            result.innerHTML = `<div>${response}</div>`;
+        }
+    })
+}) */
+
+
 </script>

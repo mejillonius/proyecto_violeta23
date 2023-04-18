@@ -12,10 +12,13 @@ define("VARDUMPDEBUG",true);
 define("TESTDEBUG", false);
 
 
-function printvar($var){
+function printvar(...$var){
     if (VARDUMPDEBUG == true) {
+        foreach ($var as $key) {
+            var_dump($key);
+            echo(" ");
+        }
         echo("<br>");
-        var_dump($var);
     }
 }
 
