@@ -16,10 +16,37 @@ if(!isset($_SESSION)){
 if (Consultas::userExists($bd,$_POST['email'])){
     printvar("el usuario existe");
     $rol = Consultas::typeOfUser($bd,$_POST['email']);
-    printvar("respuesta de login su rol es:",$rol);
-    $_SESSION['sesionrol'] = $rol;
-    setcookie("cookierol", $rol, time()+36,"/");  
-    /* expira en 1 hora */
+    switch ($rol) {
+        case 'admin':
+            $user = Consultas::getAdmin($bd,$_POST['email']);
+            
+            # code...
+            break;
+        case 'alumno':
+            $user = Consultas::getAlumno($bd,$_POST['email']);
+            #code...
+            break;
+        case 'profesor':
+            $user = Consultas::getProfesor($bd,$_POST['email']);
+            #code...
+            break;
+        case 'centro';
+            $user = Consultas::getCentro($bd,$_POST['email']);
+            #code...
+            break;
+    }
+    if ($user->checkPassword($_POST['password'])){
+        printvar("contraseña correcta");
+        $_SESSION['sesionrol'] = $rol;
+        setcookie("cookierol", $rol, time()+36,"/");  
+        /* expira en 1 hora */
+    } else {
+        $_SESSION['sesionrol'] = null;
+        printvar("la contraseña no es correcta");
+        echo json_encode("error");       
+    }
+    
+
     echo json_encode($rol);
 } else {
     $_SESSION['sesionrol'] = null;

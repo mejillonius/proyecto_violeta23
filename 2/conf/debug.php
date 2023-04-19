@@ -9,7 +9,7 @@ define("CENTRODEBUG",false);
 define("PROFESORDEBUG",false);
 define("VARDUMPDEBUG",true);
 
-define("TESTDEBUG", false);
+define("TESTDEBUG", true);
 
 
 function printvar(...$var){

@@ -62,7 +62,7 @@ class Consultas {
     static public function createAdmin($bd,$admin){
         $sql = "INSERT INTO `admin`(`id`, `email`, `password`, `nombre`, `recovery_token`) VALUES (:id,:email,:password,:nombre,:recovery_token)";
         $query = $bd->prepare($sql);
-        $query->bindValue(':id', $admin->getId(), PDO::PARAM_STR);
+        $query->bindValue(':id', $admin->getId(), PDO::PARAM_INT);
         $query->bindValue(':email', $admin->getEmail(), PDO::PARAM_STR);
         $query->bindValue(':password', $admin->getpassword(), PDO::PARAM_STR);
         $query->bindValue(':nombre', $admin->getNombre(), PDO::PARAM_STR);
@@ -73,7 +73,7 @@ class Consultas {
     static public function updateAdmin($bd,$admin){
         $sql = "UPDATE `admin` SET id = :id, email = :email, password = :password, nombre = :nombre, recovery_token = :recovery_token WHERE email = :email2";
         $query = $bd->prepare($sql);
-        $query->bindValue(':id', $admin->getId(), PDO::PARAM_STR);
+        $query->bindValue(':id', $admin->getId(), PDO::PARAM_INT);
         $query->bindValue(':email', $admin->getEmail(), PDO::PARAM_STR);
         $query->bindValue(':password', $admin->getPassword(), PDO::PARAM_STR);
         $query->bindValue(':nombre', $admin->getNombre(), PDO::PARAM_STR);
@@ -113,7 +113,7 @@ class Consultas {
         $query->bindValue(':nombre', $alumno->getNombre(), PDO::PARAM_STR);
         $query->bindValue(':apellido', $alumno->getApellido(), PDO::PARAM_STR);
         $query->bindValue(':recovery_token', $alumno->getRecovery_token(), PDO::PARAM_STR);
-        $query->bindValue(':id_centro', $alumno->getId_centro(), PDO::PARAM_STR);
+        $query->bindValue(':id_centro', $alumno->getId_centro(), PDO::PARAM_INT);
         return $query->execute();
     }
     static public function updateAlumno($bd,$alumno){
@@ -124,7 +124,7 @@ class Consultas {
         $query->bindValue(':nombre', $alumno->getNombre(), PDO::PARAM_STR);
         $query->bindValue(':apellido', $alumno->getApellido(), PDO::PARAM_STR);
         $query->bindValue(':recovery_token', $alumno->getRecovery_token(), PDO::PARAM_STR);
-        $query->bindValue(':id_centro', $alumno->getId_centro(), PDO::PARAM_STR);
+        $query->bindValue(':id_centro', $alumno->getId_centro(), PDO::PARAM_INT);
         $query->bindValue(':email2', $alumno->getEmail());
         return $query->execute();
     }
@@ -155,7 +155,7 @@ class Consultas {
         $sql = 'INSERT INTO `aula`(`id_alumno`, `id_instancia`, `visto`, `completado`, `feedback`) VALUES (:id_alumno, :id_instancia, :visto , :completado, :feedback);';
         $query = $bd->prepare($sql);
         $query->bindValue(':id_alumno', $aula->getId_alumno(), PDO::PARAM_STR);
-        $query->bindValue(':id_instancia', $aula->getId_instancia(), PDO::PARAM_STR);
+        $query->bindValue(':id_instancia', $aula->getId_instancia(), PDO::PARAM_INT);
         $query->bindValue(':visto', $aula->getVisto(), PDO::PARAM_BOOL);
         $query->bindValue(':completado', $aula->getCompletado(), PDO::PARAM_BOOL);
         $query->bindValue(':feedback', $aula->getFeedback(), PDO::PARAM_STR);
@@ -202,7 +202,7 @@ class Consultas {
     static public function createCentro($bd,$centro){
         $sql = "INSERT INTO `centro`(`id`, `email`, `password`, `nombre`, `recovery_token`) VALUES (:id,:email,:password,:nombre,:recovery_token)";
         $query = $bd->prepare($sql);
-        $query->bindValue(':id', $centro->getId(), PDO::PARAM_STR);
+        $query->bindValue(':id', $centro->getId(), PDO::PARAM_INT);
         $query->bindValue(':email', $centro->getEmail(), PDO::PARAM_STR);
         $query->bindValue(':password', $centro->getpassword(), PDO::PARAM_STR);
         $query->bindValue(':nombre', $centro->getNombre(), PDO::PARAM_STR);
@@ -213,7 +213,7 @@ class Consultas {
     static public function updateCentro($bd,$centro){
         $sql = "UPDATE `centro` SET id = :id, email = :email, password = :password, nombre = :nombre, recovery_token = :recovery_token WHERE email = :email2";
         $query = $bd->prepare($sql);
-        $query->bindValue(':id', $centro->getId(), PDO::PARAM_STR);
+        $query->bindValue(':id', $centro->getId(), PDO::PARAM_INT);
         $query->bindValue(':email', $centro->getEmail(), PDO::PARAM_STR);
         $query->bindValue(':password', $centro->getPassword(), PDO::PARAM_STR);
         $query->bindValue(':nombre', $centro->getNombre(), PDO::PARAM_STR);
@@ -249,9 +249,9 @@ class Consultas {
     static public function createInstancia($bd, $instancia){
         $sql = "INSERT INTO `instancia`(`id`, `id_profesor`, `id_practica`, `creacion`, `fecha_limite`, `estado`,`url`) VALUES (:id,:id_profesor,:id_practica,:creacion,:fecha_limite,:estado,:url)";
         $query = $bd->prepare($sql);
-        $query->bindValue(':id', $instancia->getId(), PDO::PARAM_STR);
+        $query->bindValue(':id', $instancia->getId(), PDO::PARAM_INT);
         $query->bindValue(':id_profesor', $instancia->getId_profesor(), PDO::PARAM_STR);
-        $query->bindValue(':id_practica', $instancia->getid_practica(), PDO::PARAM_STR);
+        $query->bindValue(':id_practica', $instancia->getid_practica(), PDO::PARAM_INT);
         $query->bindValue(':creacion', $instancia->getCreacion(), PDO::PARAM_STR);
         $query->bindValue(':fecha_limite', $instancia->getFecha_limite(), PDO::PARAM_STR);
         $query->bindValue(':estado', $instancia->getEstado(), PDO::PARAM_STR);
@@ -261,9 +261,9 @@ class Consultas {
     static public function updateInstancia($bd, $instancia){
         $sql = "UPDATE `instancia` SET id = :id, id_profesor = :id_profesor, id_practica = :id_practica, creacion = :creacion, fecha_limite = :fecha_limite, estado = :estado, url = :url WHERE id = :id2";
         $query = $bd->prepare($sql);
-        $query->bindValue(':id', $instancia->getId(), PDO::PARAM_STR);
+        $query->bindValue(':id', $instancia->getId(), PDO::PARAM_INT);
         $query->bindValue(':id_profesor', $instancia->getId_profesor(), PDO::PARAM_STR);
-        $query->bindValue(':id_practica', $instancia->getid_practica(), PDO::PARAM_STR);
+        $query->bindValue(':id_practica', $instancia->getid_practica(), PDO::PARAM_INT);
         $query->bindValue(':creacion', $instancia->getCreacion(), PDO::PARAM_STR);
         $query->bindValue(':fecha_limite', $instancia->getFecha_limite(), PDO::PARAM_STR);
         $query->bindValue(':estado', $instancia->getEstado(), PDO::PARAM_STR);
@@ -298,7 +298,7 @@ class Consultas {
     static public function createPractica($bd, $practica){
         $sql = "INSERT INTO `practica`(`id`, `titulo`, `downloads`, `rating`, `guion`, `autor`) VALUES ( :id, :titulo, :downloads, :rating, :guion, :autor)";
         $query = $bd->prepare($sql);
-        $query->bindValue(':id', $practica->getId(),PDO::PARAM_STR);
+        $query->bindValue(':id', $practica->getId(),PDO::PARAM_INT);
         $query->bindValue(':titulo', $practica->getTitulo(),PDO::PARAM_STR);
         $query->bindValue(':downloads', $practica->getDownloads(),PDO::PARAM_INT);
         $query->bindValue(':rating', $practica->getRating(),PDO::PARAM_INT);
@@ -310,13 +310,13 @@ class Consultas {
     static public function updatePractica($bd, $practica){
         $sql = "UPDATE `practica` SET `id`=:id,`titulo`=:titulo,`downloads`=:downloads,`rating`=:rating,`guion`=:guion,`autor`=:autor WHERE `id` = :id2";
         $query = $bd->prepare($sql);
-        $query->bindValue(':id', $practica->getId(),PDO::PARAM_STR);
+        $query->bindValue(':id', $practica->getId(),PDO::PARAM_INT);
         $query->bindValue(':titulo', $practica->getTitulo(),PDO::PARAM_STR);
         $query->bindValue(':downloads', $practica->getDownloads(),PDO::PARAM_INT);
         $query->bindValue(':rating', $practica->getRating(),PDO::PARAM_INT);
         $query->bindValue(':guion', $practica->getGuion(),PDO::PARAM_STR);
         $query->bindValue(':autor', $practica->getAutor(),PDO::PARAM_STR);
-        $query->bindValue(':id2', $practica->getId(),PDO::PARAM_STR);
+        $query->bindValue(':id2', $practica->getId(),PDO::PARAM_INT);
         return $query->execute();
     }
     static public function deletePractica($bd, $id){
@@ -351,7 +351,7 @@ class Consultas {
         $query->bindValue(':nombre', $profesor->getNombre(), PDO::PARAM_STR);
         $query->bindValue(':apellido', $profesor->getApellido(), PDO::PARAM_STR);
         $query->bindValue(':recovery_token', $profesor->getRecovery_token(), PDO::PARAM_STR);
-        $query->bindValue(':id_centro', $profesor->getId_centro(), PDO::PARAM_STR);
+        $query->bindValue(':id_centro', $profesor->getId_centro(), PDO::PARAM_INT);
         return $query->execute();
     }
     static public function updateProfesor($bd, $profesor){
@@ -362,7 +362,7 @@ class Consultas {
         $query->bindValue(':nombre', $profesor->getNombre(), PDO::PARAM_STR);
         $query->bindValue(':apellido', $profesor->getApellido(), PDO::PARAM_STR);
         $query->bindValue(':recovery_token', $profesor->getRecovery_token(), PDO::PARAM_STR);
-        $query->bindValue(':id_centro', $profesor->getId_centro(), PDO::PARAM_STR);
+        $query->bindValue(':id_centro', $profesor->getId_centro(), PDO::PARAM_INT);
         $query->bindValue(':email2', $profesor->getEmail());
         return $query->execute();
     }

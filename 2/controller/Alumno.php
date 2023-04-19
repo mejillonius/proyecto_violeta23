@@ -54,6 +54,10 @@ class Alumno {
 		return $this;
 	}
 
+	public function checkPassword($password) {
+		return password_verify($password, $this->password);
+	}
+
 	/**
 	 * @return mixed
 	 */

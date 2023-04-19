@@ -50,13 +50,13 @@ echo(LOADDEBUG?"Debug loader Maintest <br> ":"");
 
     function mainTest() {
         $bd = new BaseMysql();
-        $adminTestValido = new Admin("idtest", "admin@test.com", "test", "test");
-        $alumnoTestValido = new Alumno("alumno@test.com","test","alumno","test","uno");
-        $aulaTestValido = new Aula("alumno@test.com","idtest", true, true, "feedback test");
-        $centroTestvalido = new Centro("idtest", "centro@test.com", "test", "test");
-        $instanciaTestValido = new Instancia("idtest", "profesor@test.com", "idtest", "01/01/2019", "01/01/2019", 4, "testURL");
-        $practicaTestValido = new Practica("idtest", "titulo test", 5, 5, "{guiontest: 'guion'}", "profesor@test.com");
-        $profesorTestValido = new Profesor("profesor@test.com","test","alumno","test","uno"); 
+        $adminTestValido = new Admin(255, "admin@test.com", "test", "test");
+        $alumnoTestValido = new Alumno("alumno@test.com","test","alumno","test",255);
+        $aulaTestValido = new Aula("alumno@test.com",255, true, true, "feedback test");
+        $centroTestvalido = new Centro(255, "centro@test.com", "test", "test");
+        $instanciaTestValido = new Instancia(255, "profesor@test.com", 255, "01/01/2019", "01/01/2019", 4, "testURL");
+        $practicaTestValido = new Practica(255, "titulo test", 5, 5, "{guiontest: 'guion'}", "profesor@test.com");
+        $profesorTestValido = new Profesor("profesor@test.com","test","alumno","test",255); 
 
 
         /* bloque de creacion */
