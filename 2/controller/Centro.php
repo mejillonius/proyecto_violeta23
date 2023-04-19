@@ -63,7 +63,8 @@ class Centro {
 	 * @return self
 	 */
 	public function setPassword($password): self {
-		$this->password = $password;
+		$this->password = password_hash($password, PASSWORD_DEFAULT, ["cost" => 10]);
+        $this->setRecovery_token(null);
 		return $this;
 	}
 

@@ -15,7 +15,8 @@ class Consultas {
         $query->bindValue(':email4', $email);
         $query->execute();
         $user = $query->fetch(PDO::FETCH_ASSOC);
-        if ($user != false)
+        printvar($user);
+        if ($user)
         {
             return true;
         } else {
