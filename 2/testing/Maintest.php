@@ -54,12 +54,21 @@ echo(LOADDEBUG?"Debug loader Maintest <br> ":"");
         $alumnoTestValido = new Alumno("alumno@test.com","test","alumno","test",255);
         $aulaTestValido = new Aula("alumno@test.com",255, true, true, "feedback test");
         $centroTestvalido = new Centro(255, "centro@test.com", "test", "test");
-        $instanciaTestValido = new Instancia(255, "profesor@test.com", 255, "01/01/2019", "01/01/2019", 4, "testURL");
+        $instanciaTestValido = new Instancia(255, "profesor@test.com", 255, date('Y-m-d H:i:s'), date('Y-m-d H:i:s'), 1, "testURL");
         $practicaTestValido = new Practica(255, "titulo test", 5, 5, "{guiontest: 'guion'}", "profesor@test.com");
         $profesorTestValido = new Profesor("profesor@test.com","test","alumno","test",255); 
 
+        printvar("bloque de deletes");
+        printvar(Consultas::deleteAula($bd,"alumno@test.com",255));
+        printvar(Consultas::deleteInstancia($bd, 255));
+        printvar(Consultas::deletePractica($bd, 255));
+        printvar(Consultas::deleteAdmin($bd,"admin@test.com"));
+        printvar(Consultas::deleteAlumno($bd,"alumno@test.com"));
+        printvar(Consultas::deleteProfesor($bd, "profesor@test.com"));
+        printvar(Consultas::deleteCentro($bd,"centro@test.com"));
 
         /* bloque de creacion */
+        printvar("bloque de creacion");
         printvar(Consultas::createAdmin($bd,$adminTestValido));
         printvar(Consultas::createCentro($bd,$centroTestvalido));
         printvar(Consultas::createAlumno($bd,$alumnoTestValido));
@@ -69,13 +78,13 @@ echo(LOADDEBUG?"Debug loader Maintest <br> ":"");
         printvar(Consultas::createAula($bd,$aulaTestValido));
         /* bloque de gets */
         printvar("bloque de gets");
-        printvar(Consultas::getAdmin($bd, "admin@test.com"));
-        printvar(Consultas::getAlumno($bd, "alumno@test.com"));
-        printvar(Consultas::getAula($bd, "alumno@test.com","idtest"));
-        printvar(Consultas::getCentro($bd, "centro@test.com"));
-        printvar(Consultas::getInstancia($bd, "idtest"));
-        printvar(Consultas::getPractica($bd, "idtest"));
-        printvar(Consultas::getProfesor($bd, "profesor@test.com"));
+        printvar(Consultas::getAdmin($bd, "admin@test.com"),'<br>');
+        printvar(Consultas::getAlumno($bd, "alumno@test.com"),'<br>');
+        printvar(Consultas::getAula($bd, "alumno@test.com",255),'<br>');
+        printvar(Consultas::getCentro($bd, "centro@test.com"),'<br>');
+        printvar(Consultas::getInstancia($bd, 255),'<br>');
+        printvar(Consultas::getPractica($bd, 255),'<br>');
+        printvar(Consultas::getProfesor($bd, "profesor@test.com"),'<br>');
         /* bloque de update */
 
         printvar("bloque de updates");
@@ -104,15 +113,15 @@ echo(LOADDEBUG?"Debug loader Maintest <br> ":"");
 
         printvar("update de instancia");
         $copiaDeInstancia = $instanciaTestValido;
-        $copiaDeInstancia->setEstado(false);
+        $copiaDeInstancia->setEstado(3);
         printvar(Consultas::updateInstancia($bd,$copiaDeInstancia));
-        printvar(Consultas::getInstancia($bd, "idtest"));
+        printvar(Consultas::getInstancia($bd, 255));
 
         printvar("update de practica");
         $copiaDePractica = $practicaTestValido;
         $practicaTestValido->setDownloads(4567);
         printvar(Consultas::updatePractica($bd,$copiaDePractica));
-        printvar(Consultas::getPractica($bd, "idtest"));
+        printvar(Consultas::getPractica($bd, 255));
 
         printvar("update de profesor");
         $copiaDeProfesor = $profesorTestValido;
@@ -121,9 +130,9 @@ echo(LOADDEBUG?"Debug loader Maintest <br> ":"");
         printvar(Consultas::getProfesor($bd, "profesor@test.com"));
 
         printvar("bloque de deletes");
-        printvar(Consultas::deleteAula($bd,"alumno@test.com","idtest"));
-        printvar(Consultas::deleteInstancia($bd, "idtest"));
-        printvar(Consultas::deletePractica($bd, "idtest"));
+        printvar(Consultas::deleteAula($bd,"alumno@test.com",255));
+        printvar(Consultas::deleteInstancia($bd, 255));
+        printvar(Consultas::deletePractica($bd, 255));
         printvar(Consultas::deleteAdmin($bd,"admin@test.com"));
         printvar(Consultas::deleteAlumno($bd,"alumno@test.com"));
         printvar(Consultas::deleteProfesor($bd, "profesor@test.com"));
@@ -131,10 +140,10 @@ echo(LOADDEBUG?"Debug loader Maintest <br> ":"");
         printvar("comprobacion del borrado");
         printvar(Consultas::getAdmin($bd, "admin@test.com"));
         printvar(Consultas::getAlumno($bd, "alumno@test.com"));
-        printvar(Consultas::getAula($bd, "alumno@test.com","idtest"));
+        printvar(Consultas::getAula($bd, "alumno@test.com",255));
         printvar(Consultas::getCentro($bd, "centro@test.com"));
-        printvar(Consultas::getInstancia($bd, "idtest"));
-        printvar(Consultas::getPractica($bd, "idtest"));
+        printvar(Consultas::getInstancia($bd, 255));
+        printvar(Consultas::getPractica($bd, 255));
         printvar(Consultas::getProfesor($bd, "profesor@test.com"));
 
 
