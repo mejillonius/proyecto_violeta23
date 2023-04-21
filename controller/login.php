@@ -55,5 +55,5 @@ if (Consultas::userExists($bd,$_POST['email'])){
 }
 $bd = null;
 
-header("Refresh:0; url=".url_base);
+header("Refresh:5; url=".url_base);
 

@@ -30,8 +30,9 @@ $numeroDeAlumnos = 300;
 
 
 /* CREANDO ADMINS */
-/* printvar("admins");
-$adminobj = new Admin(null,'admin@admin.com','admin','administrador');
+printvar("admins");
+$passwordadmin = "admin";
+$adminobj = new Admin(null,'admin@admin.com',$passwordadmin,'administrador');
 if(Consultas::userExists($bd,'admin@admin.com') == false){
     printvar("insert:", Consultas::createAdmin($bd,$adminobj));
 } else {
@@ -46,10 +47,10 @@ foreach ($jsonadmin['results'] as $admin) {
     } else {
         printvar("el usuario ya existe");
     }
-} */
+}
 
 /* CREANDO CENTROS */
-/* printvar("centros");
+printvar("centros");
 $centroobj = new Centro(null,'centro@centro.com','centro','centro de ejemplo');
 if(Consultas::userExists($bd,'centro@centro.com') == false){
     printvar("insert:", Consultas::createCentro($bd,$centroobj));
@@ -66,10 +67,10 @@ foreach ($jsoncentro['results'] as $centro) {
     } else {
         printvar("el centro ya existe");
     }
-} */
+} 
 
 /* CREANDO PROFESORES */
-/* printvar("profesores");
+ printvar("profesores");
 $profesorobj = new Profesor('profesor@profesor.com','profesor', 'profe', 'sor', 1);
 if(Consultas::userExists($bd,'profesor@profesor.com') == false){
     printvar("insert:", Consultas::createProfesor($bd,$profesorobj));
@@ -91,7 +92,7 @@ foreach ($jsonprofesor['results'] as $profesor) {
     } else {
         $i++;
     }
-} */
+}
 
 
 /* CREANDO ALUMNOS */

@@ -3,11 +3,11 @@
 require_once("../conf/debug.php");
 require_once("../conf/conf.php");
 
-/* if (isset($_COOKIE['cookierol'])) {
+if (isset($_COOKIE['cookierol'])) {
     unset($_COOKIE['cookierol']); 
     setcookie('cookierol', null, -1, '/'); 
 
-} */
+}
 if (isset($_COOKIE['PHPSESSID'])) {
     unset($_COOKIE['PHPSESSID']); 
     setcookie('PHPSESSID', null, -1, '/'); 

@@ -23,6 +23,26 @@ class Consultas {
             return false;
         }; 
     }
+    static public function getUserPassword($bd,$email){
+        $sql = "SELECT email, password FROM `profesor` WHERE email = :email1 
+                UNION SELECT email, password FROM `centro` WHERE email = :email2 
+                UNION SELECT email, password FROM `admin` WHERE email = :email3 
+                UNION SELECT email, password FROM `alumno` WHERE email = :email4;";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':email1', $email);
+        $query->bindValue(':email2', $email);
+        $query->bindValue(':email3', $email);
+        $query->bindValue(':email4', $email);
+        $query->execute();
+        $user = $query->fetch(PDO::FETCH_ASSOC);
+        printvar($user);
+        if ($user)
+        {
+            return $user;
+        } else {
+            return false;
+        };  
+    }
     static public function typeOfUser ($bd, $email){
         $sql = 'SELECT email, "profesor" AS `tipo` FROM `profesor` WHERE email = :email1
         UNION SELECT email, "centro" AS `tipo` FROM `centro` WHERE email = :email2
@@ -43,6 +63,7 @@ class Consultas {
         };                
     }
     static public function getAdmin($bd,$email){
+        require_once('../controller/Admin.php');
         $sql = "SELECT * FROM `admin` WHERE email = :email1";
         $query = $bd->prepare($sql);
         $query->bindValue(':email1', $email);  

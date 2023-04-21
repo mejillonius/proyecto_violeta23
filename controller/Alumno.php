@@ -49,8 +49,13 @@ class Alumno {
 	 * @return self
 	 */
 	public function setPassword($password): self {
-		$this->password = password_hash($password, PASSWORD_DEFAULT, ["cost" => 10]);
+		if (str_starts_with($password,'$2y$10$')){
+			$this->password = $password;
+		}else {
+		$this->password = password_hash($password, PASSWORD_DEFAULT);
+		printvar($this->password);
         $this->setRecovery_token(null);
+		}
 		return $this;
 	}
 
