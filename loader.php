@@ -32,5 +32,5 @@ if (TESTDEBUG == true){
     mainTest();
 }
 
-printvar("sesion", $_SESSION);
-printvar("cookie", $_COOKIE);
+/* printvar("sesion", $_SESSION);
+printvar("cookie", $_COOKIE); */

@@ -38,7 +38,7 @@ if (Consultas::userExists($bd,$_POST['email'])){
     if ($user->checkPassword($_POST['password'])){
         printvar("contraseña correcta");
         $_SESSION['sesionrol'] = $rol;
-        setcookie("cookierol", $rol, time()+36,"/");  
+        setcookie("cookierol", $rol, time()+3600,"/");  
         /* expira en 1 hora */
     } else {
         $_SESSION['sesionrol'] = null;

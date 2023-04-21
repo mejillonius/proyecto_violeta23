@@ -9,15 +9,23 @@
 
     <div class="container">
 
-    <form action="controller/login.php" method="POST" id="formulario">
-        <input type="text" name="email" placeholder="email">
-        <input type="text" name="password" placeholder="contraseña">
-        <button type="submit">Enviar</button>
-    </form>
-    <form action="controller/logout.php">
-        <button type="submit">logout</button>
-    </form>
-        
+    <?php 
+    if (isset($_COOKIE['cookierol'])){
+        echo("
+            <form action='controller/logout.php'>
+                <button type='submit'>logout</button>
+            </form>
+        ");
+    } else {
+        echo("
+            <form action='controller/login.php' method='POST' id='formulario'>
+                <input type='text' name='email' placeholder='email'>
+                <input type='text' name='password' placeholder='contraseña'>
+                <button type='submit'>Enviar</button>
+            </form>
+        ");
+    }   
+    ?>
         <div id="mostra">
 
     </div>

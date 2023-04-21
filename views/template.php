@@ -44,7 +44,24 @@ if(!isset($_SESSION)){
             include "tpls/error404.php";
         }
     } else {
+        if (isset($_COOKIE['cookierol'])){
+            switch ($_COOKIE['cookierol']) {
+                case 'admin':
+                    include "tpls/pdcadmin.php";
+                    break;
+                case 'alumno':
+                    include "tpls/pdcalumno.php";
+                    break;
+                case 'centro':  
+                    include "tpls/pdccentro.php";
+                    break;
+                case 'profesor':
+                    include "tpls/pdcprofesor.php";
+
+            }
+        } else {
         include "tpls/inicio.php";
+        }
     }
 ?>
 

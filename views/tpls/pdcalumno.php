@@ -1,6 +1,13 @@
-pdcalumno
+<?php
+if ($_COOKIE['cookierol'] != 'alumno'){
+    header("Refresh:0; url=".url_base);
+}
+?>
 
-apuntarse a practica
+<h1>pdcalumno</h1>
 
-revisar practicas apuntadas
-entrar a practicas
+<n2>apuntarse a practica</n2>
+
+<p>revisar practicas apuntadas</p>
+
+<p>entrar a practicas</p>
