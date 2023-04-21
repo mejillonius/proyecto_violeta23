@@ -162,7 +162,8 @@ class Alumno {
 	public function toHTML(){
 		return
 		"<tr>
-			<td>";
+			<td>$this->nombre $this->apellido</td> 
+		</tr>";
 	}
 
         public function __construct($email,$password,$nombre,$apellido, $id_centro, $recovery_token = null){

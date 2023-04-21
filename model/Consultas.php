@@ -127,6 +127,31 @@ class Consultas {
             return false;
         };         
     }
+
+    static public function getAlumnoByCentro($bd,$centro){
+        require_once('../controller/Alumno.php');
+        $sql = "SELECT * FROM `alumno` WHERE id_centro = :centro";
+        $query = $bd->prepare($sql);
+        $query->bindValue(':centro', $centro);  
+        $query->execute();
+        $alumnos = $query->fetchAll(PDO::FETCH_ASSOC);      
+        if ($alumnos != false)
+        {
+            $returnAlumnos =[];
+            foreach ($alumnos as $alumno) {
+                array_push($returnAlumnos,new Alumno($alumno['email'],
+                                                    $alumno['password'],
+                                                    $alumno['nombre'],
+                                                    $alumno['apellido'],
+                                                    $alumno['id_centro'],
+                                                    $alumno['recovery_token'])
+            );
+            }
+            return $returnAlumnos;
+        } else {
+            return false;
+        };         
+    }   
     static public function createAlumno($bd,$alumno){
         $sql = "INSERT INTO `alumno`(`email`, `password`, `nombre`, `apellido`, `recovery_token`, `id_centro`) VALUES (:email,:password,:nombre,:apellido,:recovery_token,:id_centro)";
         $query = $bd->prepare($sql);
