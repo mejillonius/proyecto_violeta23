@@ -122,3 +122,9 @@ foreach ($jsonalumno['results'] as $alumno) {
         $i++;
     }
 }
+
+/* CREANDO PRACTICA DE EJEMPLO */
+
+printvar("practica");
+$practicaobj = new Practica(null,'practica de ejemplo',null,null,'{\"0\":[\"text\":\"esto seria un ejemplo de guion\"],\"1\":[\"tree\":[\"erlenemeyer\",\"tubo\",\"columna\",\"tubo\",\"vaso\"],\"2\":[\"contains\":[\"vaso\",\"alcohol\",40,40],\"3\":[\"text\":\"los elementos pueden repetirse si hace falta\"]}','profesor@profesor.com');
+
