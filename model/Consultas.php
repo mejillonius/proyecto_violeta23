@@ -63,7 +63,7 @@ class Consultas {
         };                
     }
     static public function getAdmin($bd,$email){
-        require_once('../controller/Admin.php');
+        require_once(url_controller.'Admin.php');
         $sql = "SELECT * FROM `admin` WHERE email = :email1";
         $query = $bd->prepare($sql);
         $query->bindValue(':email1', $email);  
@@ -109,7 +109,7 @@ class Consultas {
         return $query->execute();
     }
     static public function getAlumno($bd,$email){
-        require_once('../controller/Alumno.php');
+        require_once(url_controller.'Alumno.php');
         $sql = "SELECT * FROM `alumno` WHERE email = :email1";
         $query = $bd->prepare($sql);
         $query->bindValue(':email1', $email);  
@@ -129,7 +129,7 @@ class Consultas {
     }
 
     static public function getAlumnoByCentro($bd,$centro){
-        require_once('../controller/Alumno.php');
+        require_once(url_controller.'Alumno.php');
         $sql = "SELECT * FROM `alumno` WHERE id_centro = :centro";
         $query = $bd->prepare($sql);
         $query->bindValue(':centro', $centro);  
@@ -182,7 +182,7 @@ class Consultas {
         return $query->execute();
     }
     static public function getAula($bd,$id_alumno,$id_instancia){
-        require_once('../controller/Aula.php');
+        require_once(url_controller.'Aula.php');
         $sql = "SELECT * FROM `aula` WHERE `id_alumno` = :id_alumno AND `id_instancia` = :id_instancia";
         $query = $bd->prepare($sql);
         $query->bindValue(':id_alumno', $id_alumno);
@@ -231,7 +231,7 @@ class Consultas {
         return $query->execute();       
     }
     static public function getCentro($bd,$email){
-        require_once('../controller/Centro.php');
+        require_once(url_controller.'Centro.php');
         $sql = "SELECT * FROM `centro` WHERE email = :email1";
         $query = $bd->prepare($sql);
         $query->bindValue(':email1', $email);  
@@ -277,7 +277,7 @@ class Consultas {
         return $query->execute();
     }
     static public function getInstancia($bd, $id){
-        require_once('../controller/Instancia.php');
+        require_once(url_controller.'Instancia.php');
         $sql = "SELECT * FROM `instancia` WHERE id = :id";
         $query = $bd->prepare($sql);
         $query->bindValue(':id', $id);  
@@ -328,7 +328,7 @@ class Consultas {
         return $query->execute();
     }
     static public function getPractica($bd, $id){
-        require_once('../controller/Practica.php');
+        require_once(url_controller.'Practica.php');
         $sql = "SELECT * FROM `practica` WHERE id = :id";
         $query = $bd->prepare($sql);
         $query->bindValue(':id', $id);  
@@ -377,7 +377,7 @@ class Consultas {
         return $query->execute();
     }
     static public function getProfesor($bd,$email){
-        require_once('../controller/Profesor.php');
+        require_once(url_controller.'Profesor.php');
         $sql = "SELECT * FROM `profesor` WHERE email = :email1";
         $query = $bd->prepare($sql);
         $query->bindValue(':email1', $email);  

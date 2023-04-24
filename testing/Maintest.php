@@ -1,5 +1,17 @@
 <?php
 echo(LOADDEBUG?"Debug loader Maintest <br> ":"");
+require_once("conf/debug.php");
+require_once("conf/conf.php");
+require_once("model/BaseMysql.php");
+require_once("model/Consultas.php");
+require_once("controller/Admin.php");
+require_once("controller/Alumno.php");
+require_once("controller/Aula.php");
+require_once("controller/Centro.php");
+require_once("controller/Instancia.php");
+require_once("controller/Practica.php");
+require_once("controller/Profesor.php");
+
 /* TODO: 
     test de existencia de usuario
     test de tipo de usuario
