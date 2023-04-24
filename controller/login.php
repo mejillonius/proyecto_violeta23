@@ -24,14 +24,17 @@ if (Consultas::userExists($bd,$_POST['email'])){
             break;
         case 'alumno':
             $user = Consultas::getAlumno($bd,$_POST['email']);
+            setcookie("cookieCentro", $user->getId_centro(), time()+3600,"/"); 
             #code...
             break;
         case 'profesor':
             $user = Consultas::getProfesor($bd,$_POST['email']);
+            setcookie("cookieCentro", $user->getId_centro(), time()+3600,"/"); 
             #code...
             break;
         case 'centro';
             $user = Consultas::getCentro($bd,$_POST['email']);
+            setcookie("cookieCentro", $user->getId(), time()+3600,"/"); 
             #code...
             break;
     }

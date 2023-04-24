@@ -30,6 +30,8 @@ if ($_COOKIE['cookierol'] != 'admin'){
     <input type="text" name="pdcAdminModificarAlumnoApellido" id="pdcAdminModificarAlumnoApellido">
     <label for="pdcAdminModificarAlumnoEmail">Email</label>
     <input type="text" name="pdcAdminModificarAlumnoEmail" id="pdcAdminModificarAlumnoEmail">
+    <label for="pdcAdminModificarrAlumnoPassword">Password</label>
+    <input type="text" name="pdcAdminModificarAlumnoPassword" id="pdcAdminModificarAlumnoPassword">
     <label for="pdcAdminModificarAlumnoCentro">centro</label>
     <input type="text" name="pdcAdminModificarAlumnoCentro" id="pdcAdminModificarAlumnoCentro">
     <input type="submit" value="Submit">
@@ -51,6 +53,8 @@ if ($_COOKIE['cookierol'] != 'admin'){
     <input type="text" name="pdcAdminCrearProfesorApellido" id="pdcAdminCrearProfesorApellido">
     <label for="pdcAdminCrearProfesorEmail">Email</label>
     <input type="text" name="pdcAdminCrearProfesorEmail" id="pdcAdminCrearProfesorEmail">
+    <label for="pdcAdminCrearProfesorPassword">Password</label>
+    <input type="text" name="pdcAdminCrearProfesorPassword" id="pdcAdminCrearProfesorPassword">
     <label for="pdcAdminCrearProfesorCentro">centro</label>
     <input type="text" name="pdcAdminCrearProfesorCentro" id="pdcAdminCrearProfesorCentro">
     <input type="submit" value="Submit">
@@ -63,6 +67,8 @@ if ($_COOKIE['cookierol'] != 'admin'){
     <input type="text" name="pdcAdminModificarProfesorApellido" id="pdcAdminModificarProfesorApellido">
     <label for="pdcAdminModificarProfesorEmail">Email</label>
     <input type="text" name="pdcAdminModificarProfesorEmail" id="pdcAdminModificarProfesorEmail">
+    <label for="pdcAdminCrearProfesorPassword">Password</label>
+    <input type="text" name="pdcAdminCrearProfesorPassword" id="pdcAdminCrearProfesorPassword">
     <label for="pdcAdminModificarProfesorCentro">centro</label>
     <input type="text" name="pdcAdminModificarProfealumnosorCentro" id="pdcAdminModificarProfesorCentro">
     <input type="submit" value="Submit">
@@ -78,7 +84,7 @@ if ($_COOKIE['cookierol'] != 'admin'){
 <h2>crud centros</h2>
 
 <button id="crearCentro">crear centro</button>
-<form id="pdcAdminCrearCentro" method="POST" action="controller/pdcAdminCrearProfesor.php">
+<form id="pdcAdminCrearCentro" method="POST" action="controller/pdcAdminCrearCentro.php">
     <label for="pdcAdminCrearCentroNombre">Nombre</label>
     <input type="text" name="pdcAdminCrearCentroNombre" id="pdcAdminCrearCentroNombre">
     <label for="pdcAdminCrearCentroEmail">Email</label>
@@ -88,7 +94,7 @@ if ($_COOKIE['cookierol'] != 'admin'){
     <input type="submit" value="submit">
 </form>
 <button id="modificarCentro">modificar centro</button>
-<form id="pdcAdminModificarCentro" method="POST" action="controller/pdcAdminModificarProfesor.php">
+<form id="pdcAdminModificarCentro" method="POST" action="controller/pdcAdminModificarCentro.php">
     <label for="pdcAdminModificarCentroNombre">Nombre</label>
     <input type="text" name="pdcAdminModificarCentroNombre" id="pdcAdminModificarCentroNombre">
     <label for="pdcAdminModificarCentroEmail">Email</label>
@@ -99,8 +105,8 @@ if ($_COOKIE['cookierol'] != 'admin'){
 </form>
 <button id="eliminarCentro">eliminar centro</button>
 <form id="pdcAdminEliminarCentro" method="POST" action="controller/pdcAdminEliminaCentro.php">
-    <label for="pdcAdminModificarCentroEmail">Email</label>
-    <input type="text" name="pdcAdminModificarCentroEmail" id="pdcAdminModificarCentroEmail">
+    <label for="pdcAdminEliminarCentroEmail">Email</label>
+    <input type="text" name="pdcAdminEliminarCentroEmail" id="pdcAdminEliminarCentroEmail">
     <input type="submit" value="Submit">
 </form>
 

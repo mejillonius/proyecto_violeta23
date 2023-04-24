@@ -8,6 +8,11 @@ if (isset($_COOKIE['cookierol'])) {
     setcookie('cookierol', null, -1, '/'); 
 
 }
+if (isset($_COOKIE['cookieCentro'])) {
+    unset($_COOKIE['cookieCentro']); 
+    setcookie('cookieCentro', null, -1, '/'); 
+
+}
 if (isset($_COOKIE['PHPSESSID'])) {
     unset($_COOKIE['PHPSESSID']); 
     setcookie('PHPSESSID', null, -1, '/'); 

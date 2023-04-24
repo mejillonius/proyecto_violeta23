@@ -115,7 +115,7 @@ class Centro {
 		return $this;
 	}
 
-    public function __construct($id, $email,$password,$nombre,$recovery_token = null){
+    public function __construct($id = null, $email,$password,$nombre,$recovery_token = null){
         $this->setId($id);
         $this->setEmail($email);
         $this->setPassword($password);

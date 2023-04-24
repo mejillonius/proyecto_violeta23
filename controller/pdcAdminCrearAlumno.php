@@ -16,4 +16,4 @@ $alumno= new Alumno($_POST['pdcAdminCrearAlumnoEmail'],
                     $_POST['pdcAdminCrearAlumnoApellido'],
                     $_POST['pdcAdminCrearAlumnoCentro']);
 Consultas::createAlumno($bd,$alumno);
-header("Refresh:0; url=".url_base."/pdcadmin");
+header("Refresh:5; url=".url_base."/pdcadmin");

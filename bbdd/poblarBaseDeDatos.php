@@ -28,6 +28,9 @@ $numeroDeCentros = 25;
 $numeroDeProfesores = 10;
 $numeroDeAlumnos = 300;
 
+echo("<h1>se va a poblar la base de datos, este proceso tarda un rato y requiere conexion a internet</h1>");
+sleep(5);
+
 
 /* CREANDO ADMINS */
 printvar("admins");
