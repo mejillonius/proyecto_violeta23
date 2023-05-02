@@ -38,7 +38,8 @@ if(!isset($_SESSION)){
             $rutas[0] == "pdcprofesor" ||
             $rutas[0] == "recovery" ||
             $rutas[0] == "laboratorio"||
-            $rutas[0] == "pdcaula"
+            $rutas[0] == "pdcaula" ||
+            $rutas[0] == "generadorDeGuiones"
         ) {
             include "tpls/".$rutas[0].".php";
         } else {
