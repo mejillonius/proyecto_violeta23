@@ -7,7 +7,7 @@ echo(LOADDEBUG?"Debug ":"");
 define("ALUMNODEBUG",false);
 define("CENTRODEBUG",false);
 define("PROFESORDEBUG",false);
-define("VARDUMPDEBUG",true);
+define("VARDUMPDEBUG",false);
 
 define("TESTDEBUG", false);
 
@@ -22,4 +22,15 @@ function printvar(...$var){
     }
 }
 
+function str_starts_with( $haystack, $needle ){
+
+    $largo = strlen($needle);
+    $substring = substr($haystack,0,$largo);
+    if ($substring == $needle) {
+        return true;
+    } else {
+        return false;
+    }
+
+} 
 

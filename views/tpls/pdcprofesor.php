@@ -45,3 +45,5 @@ if ($_COOKIE['cookierol'] != 'profesor'){
 
 
 <h2> crud practicas</h2>
+
+    <a href="generadorDeGuiones.php/?"
