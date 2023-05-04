@@ -1,4 +1,7 @@
 <?php
+if ($_COOKIE['cookierol'] != 'profesor'){
+    header("Refresh:0; url=".url_base);
+}
 
 ?>
 
@@ -15,13 +18,14 @@
 <body>
     <button id="anadirCampo">añadir campo</button>
     <form action="" method="post" id="formulario">
+        <input type="hidden" name="autor" value="<?= $_COOKIE['user'] ?>">
         <label for="titulo">titulo</label>
         <input type="text" name="titulo" id="titulo">
 
 
     </form>
-    <button id="consolaFormulario">consolear</button>
-    <div id="prueba">
+    <button id="consolaFormulario">Gabar practica</button>
+    
     </div>
 </body>
 <script>
@@ -34,11 +38,6 @@
 
 
     function anadirCosa(localizacion) {
-
-
-
-
-        console.log(localizacion.value);
         /* localizacion.parentNode.appendChild(SelectorDeOpciones); */
         switch (localizacion.value) {
             case "texto":
@@ -105,8 +104,47 @@
 
         formu.appendChild(FieldsetAClonar.cloneNode(true));
     });
+
+
     consolear.addEventListener("click", () => {
-        console.log(formu.children);
+        let arrayParaObjeto = [];
+        let arrayDePasos = [];
+        for (const iterator of formu.children) {
+            switch (iterator.nodeName) {
+                case "INPUT":
+                    /* console.log(iterator.value); */
+                    arrayParaObjeto.push(iterator.value);
+                    break;
+                case "FIELDSET":
+                    switch (iterator.children[0].value) {
+                        case "texto":
+                            /* console.log(iterator.children[2].value); */
+                            arrayDePasos.push({"texto":iterator.children[2].value});
+                            break;
+                        case "regla":
+                            /* console.log(iterator.children[1].textContent); */
+                            arrayDePasos.push({"regla":iterator.children[1].textContent});
+                            break;
+                    
+                        default:
+                            break;
+                    }
+
+                default:
+                    break;
+            }
+        }
+        arrayParaObjeto.push(arrayDePasos);
+        arrayParaObjeto = JSON.stringify(arrayParaObjeto);
+
+        request= new XMLHttpRequest();
+        request.open("POST","http://localhost/proyecto/controller/grabaGuion.php", true )
+        request.setRequestHeader("Content-type", "application/json")
+        request.send(arrayParaObjeto)
+        console.log(request)
+        document.getElementById("prueba").innerHTML= request.responseText
+
+        
     })
 </script>
 

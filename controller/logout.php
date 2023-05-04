@@ -13,6 +13,11 @@ if (isset($_COOKIE['cookieCentro'])) {
     setcookie('cookieCentro', null, -1, '/'); 
 
 }
+if (isset($_COOKIE['user'])) {
+    unset($_COOKIE['user']); 
+    setcookie('user', null, -1, '/'); 
+
+}
 if (isset($_COOKIE['PHPSESSID'])) {
     unset($_COOKIE['PHPSESSID']); 
     setcookie('PHPSESSID', null, -1, '/'); 

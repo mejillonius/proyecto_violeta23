@@ -2,6 +2,11 @@
 if ($_COOKIE['cookierol'] != 'profesor'){
     header("Refresh:0; url=".url_base);
 }
+
+require_once("conf/debug.php");
+require_once("conf/conf.php");
+require_once('model/BaseMysql.php');
+require_once('model/Consultas.php');
 ?>
 
 <h1>pdcprofesor</h1>
@@ -46,4 +51,10 @@ if ($_COOKIE['cookierol'] != 'profesor'){
 
 <h2> crud practicas</h2>
 
-    <a href="generadorDeGuiones.php/?"
+<?php 
+$usuario = $_SESSION['user'];
+$url = url_base;
+echo("
+<a href = ".$url."generadorDeGuiones>crear una practica</a>");
+?>
+

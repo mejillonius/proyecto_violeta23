@@ -41,10 +41,13 @@ if (Consultas::userExists($bd,$_POST['email'])){
     if ($user->checkPassword($_POST['password'])){
         printvar("contraseña correcta");
         $_SESSION['sesionrol'] = $rol;
+        $_SESSION['user'] = $user->getEmail();
         setcookie("cookierol", $rol, time()+3600,"/");  
+        setcookie("user", $user->getEmail(), time()+3600,"/");  
         /* expira en 1 hora */
     } else {
         $_SESSION['sesionrol'] = null;
+        $_SESSION['user'] = null;
         printvar("la contraseña no es correcta");
         echo json_encode("error");       
     }
