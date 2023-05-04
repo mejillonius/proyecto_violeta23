@@ -4,11 +4,6 @@ echo(LOADDEBUG?"Debug loader BaseMysql <br> ":"");
 
 class BaseMysql extends PDO
 {
-/*     private $typedb = "mysql";
-    private $host = "localhost";
-    private $namedb = "proyecto;charset=utf8mb4";
-    private $user = "root";
-    private $pw = ""; */
     private $typedb = "mysql";
     private $host = "sql108.byethost18.com";
     private $namedb = "b18_34084760_presentacion;charset=utf8mb4";

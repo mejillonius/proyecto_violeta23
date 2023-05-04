@@ -50,9 +50,11 @@ require_once('model/Consultas.php');
 
 
 <h2> crud practicas</h2>
+
 <?php 
 $usuario = $_SESSION['user'];
 $url = url_base;
 echo("
 <a href = ".$url."generadorDeGuiones>crear una practica</a>");
 ?>
+
